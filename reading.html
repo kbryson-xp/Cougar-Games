@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cougar Reading Hub</title>
+<!--
+  ═══════════════════════════════════════════════════════════════════════
+  COUGAR READING HUB — shell                                        (S61)
+  ═══════════════════════════════════════════════════════════════════════
+  © 2026 Kelly Bryson
+
+  Structural placeholder. No passages yet — this exists so the three-file
+  layout is real and testable before any content is written.
+
+  ── Why a separate file ───────────────────────────────────────────────
+  Reading content is illustration-heavy (inline SVG). Keeping it out of
+  games.html means a reading sprint can never regress a game, and the
+  game hub's load time stays where it is.
+
+  ── Storage ───────────────────────────────────────────────────────────
+  Because games.html and reading.html are served from the SAME origin,
+  they share one localStorage area. That is the point — settings and
+  identity carry across for free once Firebase lands.
+
+  But they must NOT share a KEY. The game hub's state layer rehydrates
+  the whole blob on load and rewrites the whole blob on every save, so a
+  shared key would mean whichever page was open last silently wipes the
+  other. Hence:
+
+      games.html    → 'cougar-game-hub-v1'
+      reading.html  → 'cougar-reading-hub-v1'   ← this file
+
+  ── Still to do (later sprints) ───────────────────────────────────────
+    • Passage content + inline SVG illustrations
+    • Teach games.html's Save button to fold the reading blob into the
+      same export envelope, so students still save one file to Drive
+    • Add a "Reading" button to the games.html header once there is
+      something here worth crossing over for
+  ═══════════════════════════════════════════════════════════════════════
+-->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal-50:  #E6F8F6;
+  --teal-100: #BFEEE9;
+  --teal-200: #8AE0D8;
+  --teal-300: #4FD0C5;
+  --teal-400: #20C0B3;
+  --teal-500: #13B8AD;
+  --teal-600: #0E9088;
+  --teal-700: #07877F;
+  --teal-800: #065F5C;
+  --teal-900: #064F53;
+  --teal-950: #033338;
+
+  --bg:       #F5F8F6;
+  --surface:  #FFFFFF;
+  --surface2: #FAFCFB;
+  --ink:      #0A1814;
+  --ink2:     #2C3E38;
+  --muted:    #6B7E76;
+  --muted2:   #9CADA5;
+  --border:   #E2EBE6;
+  --border2:  #CCD9D2;
+
+  --gold:     #D4AF37;
+  --gold-lt:  #FFD966;
+  --gold-dk:  #8F6500;
+  --gold-edge: #B98200;
+  --coral:    #E55A4A;
+
+  --teal-board: #07877F;
+  --teal-board-deep: #065F5C;
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-2xl: 28px;
+
+  --shadow-sm: 0 1px 2px rgba(10,24,20,0.06), 0 1px 3px rgba(10,24,20,0.04);
+  --shadow-md: 0 4px 12px rgba(10,24,20,0.08), 0 2px 4px rgba(10,24,20,0.04);
+  --shadow-lg: 0 12px 32px rgba(10,24,20,0.10), 0 4px 8px rgba(10,24,20,0.06);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23064F53' opacity='0.09'%3E%3Cellipse cx='40' cy='52' rx='10' ry='8'/%3E%3Cellipse cx='28' cy='38' rx='4' ry='5'/%3E%3Cellipse cx='35' cy='30' rx='3.5' ry='4.5'/%3E%3Cellipse cx='45' cy='30' rx='3.5' ry='4.5'/%3E%3Cellipse cx='52' cy='38' rx='4' ry='5'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─────────── HEADER ─────────── */
+.app-header {
+  background: linear-gradient(to bottom, var(--teal-800) 0%, var(--teal-board) 50%, var(--teal-board) 100%);
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+.app-header::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(212,175,55,0.35) 20%, rgba(212,175,55,0.55) 50%, rgba(212,175,55,0.35) 80%, transparent 100%);
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand-mark {
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.18));
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.brand:hover .brand-mark { transform: rotate(-4deg) scale(1.04); }
+.brand-mark svg { width: 100%; height: 100%; }
+.brand-text h1 {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 700;
+  letter-spacing: -0.025em; line-height: 1;
+  color: white;
+}
+.brand-text .brand-tag {
+  font-size: 11px;
+  color: rgba(255,255,255,0.62);
+  margin-top: 6px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.header-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.header-btn {
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--r-sm);
+  color: rgba(255,255,255,0.92);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.01em;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+.header-btn:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.28);
+  color: white;
+}
+.header-btn:active { background: rgba(255,255,255,0.16); }
+.header-btn svg { width: 15px; height: 15px; opacity: 0.85; }
+.brand-link:focus-visible,
+.header-btn:focus-visible {
+  outline: 2px solid var(--gold-lt);
+  outline-offset: 2px;
+}
+
+/* ─────────── EMPTY STATE ─────────── */
+.main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 64px 28px 40px;
+  display: flex;
+  align-items: center;
+}
+
+.empty-card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+  padding: 44px 40px 38px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.empty-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--gold-edge), var(--gold-lt));
+}
+
+.empty-icon { width: 78px; height: 78px; margin: 0 auto 22px; display: block; }
+
+.empty-card h2 {
+  font-family: var(--font-display);
+  font-size: 29px; font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1.15;
+  color: var(--teal-900);
+}
+
+.empty-card p {
+  margin-top: 12px;
+  color: var(--ink2);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.empty-actions {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--r-sm);
+  background: var(--teal-700);
+  color: white;
+  font-size: 14px; font-weight: 600;
+  border: 1px solid var(--teal-800);
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.btn-primary:hover { background: var(--teal-600); transform: translateY(-1px); }
+.btn-primary svg { width: 15px; height: 15px; }
+
+.btn-quiet {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--ink2);
+  font-size: 14px; font-weight: 600;
+  border: 1px solid var(--border2);
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.btn-quiet:hover { background: var(--surface2); border-color: var(--muted2); }
+
+.btn-primary:focus-visible,
+.btn-quiet:focus-visible {
+  outline: 3px solid var(--teal-500);
+  outline-offset: 3px;
+}
+
+.site-foot {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 28px 28px 32px;
+  font-size: 12.5px;
+  color: var(--muted2);
+}
+
+@media (max-width: 720px) {
+  .header-inner { padding: 16px 20px; gap: 14px; }
+  .brand-mark { width: 42px; height: 42px; }
+  .brand-text h1 { font-size: 21px; }
+  .main { padding: 34px 18px 26px; }
+  .empty-card { padding: 32px 22px 28px; }
+  .empty-card h2 { font-size: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="brand brand-link" href="index.html" title="Back to the Cougar Hub home page">
+      <div class="brand-mark">
+        <svg viewBox="0 0 300 300" width="52" height="52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="paw-pad-grad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stop-color="#8AE0D8"/>
+              <stop offset="100%" stop-color="#20C0B3"/>
+            </radialGradient>
+          </defs>
+          <g>
+            <path d="M72 62 C60 82 59 103 66 119 C78 104 84 82 72 62 Z" fill="#F5F8F6" opacity="0.92"/>
+            <path d="M125 33 C112 56 113 78 123 95 C137 77 140 55 125 33 Z" fill="#F5F8F6" opacity="0.92"/>
+            <path d="M178 33 C165 56 166 78 176 95 C190 77 193 55 178 33 Z" fill="#F5F8F6" opacity="0.92"/>
+            <path d="M230 62 C218 82 217 103 224 119 C236 104 242 82 230 62 Z" fill="#F5F8F6" opacity="0.92"/>
+            <ellipse cx="70" cy="125" rx="30" ry="42" fill="url(#paw-pad-grad)"/>
+            <ellipse cx="125" cy="95" rx="31" ry="45" fill="url(#paw-pad-grad)"/>
+            <ellipse cx="178" cy="95" rx="31" ry="45" fill="url(#paw-pad-grad)"/>
+            <ellipse cx="232" cy="125" rx="30" ry="42" fill="url(#paw-pad-grad)"/>
+            <path d="M82 179 C95 144 121 143 138 164 C146 174 156 174 164 164 C181 143 207 144 220 179 C238 226 201 264 156 248 C151 246 147 246 142 248 C97 264 64 226 82 179 Z" fill="url(#paw-pad-grad)"/>
+            <path d="M90 214 C119 242 183 244 213 211 C205 246 173 263 142 248 C98 263 67 229 90 214 Z" fill="#065F5C" opacity="0.30"/>
+            <circle cx="151" cy="234" r="4" fill="#D4AF37" opacity="0.65"/>
+          </g>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>Cougar Reading</h1>
+        <div class="brand-tag">Stories worth your time</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a class="header-btn" href="index.html" title="Back to the Cougar Hub home page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.8"/></svg>
+        Hub home
+      </a>
+      <a class="header-btn" href="games.html" title="Go to the Cougar Game Hub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+        Games
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main class="main">
+  <div class="empty-card">
+
+    <svg class="empty-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="bk-l" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#FFD966"/>
+          <stop offset="100%" stop-color="#D4AF37"/>
+        </linearGradient>
+        <linearGradient id="bk-r" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#FFE9A8"/>
+          <stop offset="100%" stop-color="#E3C45C"/>
+        </linearGradient>
+      </defs>
+      <path d="M50 30 C40 21 24 19 12 22 L12 76 C24 73 40 75 50 84 Z" fill="url(#bk-l)"/>
+      <path d="M50 30 C60 21 76 19 88 22 L88 76 C76 73 60 75 50 84 Z" fill="url(#bk-r)"/>
+      <path d="M50 30 L50 84" stroke="#8F6500" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+      <g stroke="#8F6500" stroke-width="2.6" opacity="0.38" stroke-linecap="round">
+        <path d="M21 34 H41"/><path d="M21 44 H41"/><path d="M21 54 H37"/>
+        <path d="M59 34 H79"/><path d="M59 44 H79"/><path d="M59 54 H75"/>
+      </g>
+    </svg>
+
+    <h2>The shelf is still empty</h2>
+    <p>
+      This is where the reading section will live. The first stories and
+      articles are being written now — check back soon and there will be
+      something here to read.
+    </p>
+
+    <div class="empty-actions">
+      <a class="btn-primary" href="games.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        Play a game instead
+      </a>
+      <a class="btn-quiet" href="index.html">Back to hub home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-foot">
+  Cougar Reading Hub &nbsp;·&nbsp; © 2026 Kelly Bryson
+</footer>
+
+<script>
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  READING STATE LAYER                                     ║
+   ║                                                          ║
+   ║  Mirrors the game hub's state layer exactly, but on its   ║
+   ║  own localStorage key so the two files can never clobber  ║
+   ║  each other. Nothing reads or writes through this yet —   ║
+   ║  it is here so content sprints have a slot to drop into.  ║
+   ║                                                          ║
+   ║  Phase 2 (later): swap _readingBackend for Firebase, the  ║
+   ║  same way the game hub will.                              ║
+   ╚══════════════════════════════════════════════════════════╝ */
+const READING_STORAGE_KEY = 'cougar-reading-hub-v1';
+
+/* Same shape as GAME_REGISTRY: one entry per unit of readable content,
+   each carrying a stateVersion. Bump the version whenever a piece's
+   saved-state shape changes; mismatched saves are discarded cleanly
+   rather than half-loaded. Empty until passages exist. */
+const READING_REGISTRY = [
+  // { key: 'passage-example', stateVersion: 1 },
+];
+
+const READING_REGISTRY_MAP =
+  Object.fromEntries(READING_REGISTRY.map(r => [r.key, r]));
+
+const _readingBackend = {
+  data: Object.fromEntries(READING_REGISTRY.map(r => [r.key, null])),
+
+  _hydrate() {
+    try {
+      const raw = localStorage.getItem(READING_STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== 'object' || !parsed.items) return;
+
+      for (const entry of READING_REGISTRY) {
+        const slot = parsed.items[entry.key];
+        if (!slot || typeof slot !== 'object') continue;
+        if (slot.v === entry.stateVersion) {
+          this.data[entry.key] = slot.s;
+        } else {
+          console.warn(
+            `Discarding saved ${entry.key}: version ${slot.v} \u2260 current ${entry.stateVersion}`
+          );
+        }
+      }
+    } catch (err) {
+      console.warn('Reading state hydrate failed:', err);
+    }
+  },
+
+  _persist() {
+    try {
+      const items = {};
+      for (const entry of READING_REGISTRY) {
+        const s = this.data[entry.key];
+        items[entry.key] = s === null ? null : { v: entry.stateVersion, s };
+      }
+      localStorage.setItem(
+        READING_STORAGE_KEY,
+        JSON.stringify({ version: 1, app: 'Cougar Reading Hub', items })
+      );
+    } catch (err) {
+      // Storage full or blocked — stay in memory, don't break the page.
+      console.warn('Reading state persist failed:', err);
+    }
+  },
+
+  save(key, state) {
+    if (!(key in READING_REGISTRY_MAP)) {
+      console.warn(`saveReadingState: unknown key "${key}"`);
+      return false;
+    }
+    this.data[key] = state;
+    this._persist();
+    return true;
+  },
+
+  load(key) {
+    if (!(key in READING_REGISTRY_MAP)) {
+      console.warn(`loadReadingState: unknown key "${key}"`);
+      return null;
+    }
+    return this.data[key] || null;
+  },
+};
+
+_readingBackend._hydrate();
+
+function saveReadingState(key, state) { return _readingBackend.save(key, state); }
+function loadReadingState(key)        { return _readingBackend.load(key); }
+</script>
+
+</body>
+</html>
