@@ -6,7 +6,7 @@
 <title>Cougar Reading Hub</title>
 <!--
   ═══════════════════════════════════════════════════════════════════════
-  COUGAR READING HUB — grouped shelves + grade filter + search     (S65)
+  COUGAR READING HUB — grouped shelves + grade filter + search     (S72)
   ═══════════════════════════════════════════════════════════════════════
   © 2026 Kelly Bryson
 
@@ -18,6 +18,117 @@
           questions    →  multiple choice · short answer · cite-the-evidence
     • First passage shipped: a Grade 6–8 science phenomenon,
       "The Continents That Fit Together" (CA NGSS · MS-ESS2-3).
+
+  S66 — content-only sprint (no engine changes):
+    • Second passage shipped, first on the Social studies shelf:
+      "The Race to the Golden Spike" (CA HSS · 8.12), a Grade 6–8
+      narrative of the Transcontinental Railroad. Same mould as the
+      science piece: mc · cite-the-evidence · in-your-own-words, with
+      three self-contained inline-SVG figures (no external image files):
+      the two-crew race map, a Sierra granite tunnel cutaway, and a
+      before/after coast-to-coast travel-time bar. Intellectually honest
+      by design — the Chinese laborers erased from the 1869 photo and the
+      cost to Native nations are the spine of the evidence + short Qs.
+
+  S67 — content-only sprint (no engine changes):
+    • Third passage, second on the Science shelf: "The Engine That Makes
+      the Weather" (CA NGSS · MS-ESS2-5), Grade 6–8. Next in framework
+      order after plate tectonics: the Grade 6 Integrated model runs
+      IS1 Earth/Life systems (plate tectonics) → IS2 weather, so this is
+      IS2. Three inline-SVG figures: sunlight angle-of-incidence (why the
+      equator runs hot), a sea-breeze convection loop, and a cold-front
+      cutaway. Honesty beat mirrors the science piece's: we understand
+      exactly how weather works yet still can't predict it perfectly —
+      understanding a system ≠ predicting its every move.
+
+  S68 — grade tags made framework-precise (metadata + filter polish):
+    • Each passage now carries its CA framework HOME grade, not the broad
+      "Grades 6–8" band, so the 6 / 7 / 8 buttons actually discriminate:
+          plate-tectonics ............ Grade 6  (NGSS Integrated Gr6 IS1)
+          weather-engine ............. Grade 6  (NGSS Integrated Gr6 IS2)
+          transcontinental-railroad .. Grade 8  (HSS 8.12)
+    • Grade 7 correctly shows EMPTY for now — no grade-7-standard content
+      written yet (Gr7 science = life science / atoms; Gr7 social =
+      Medieval & Early Modern), both still ahead in the pipeline.
+    • Empty-shelf copy is now filter-aware: "No Grade 7 passages here yet"
+      vs the old catch-all "No passages match your search."
+    • NOTE on meaning: the grade tag = standards HOME grade, not reading
+      level. A passage may be readable across the band; widen its `grades`
+      array (e.g. [7,8]) if you ever want it to surface under more grades.
+
+  S69 — content sprint (Social studies 6.1, back to framework order):
+    • Fourth passage, second on the Social studies shelf and its proper
+      FRONT anchor: "The Bargain That Built the World" (CA HSS · 6.1),
+      Grade 6 — early humans from the Paleolithic to the Agricultural
+      Revolution. Hits every 6.1 sub-point: archaeology as how-we-know,
+      hunter-gatherer tools/fire, adaptation to many environments, and
+      climate-driven domestication in the Fertile Crescent. Honesty beat
+      = the "was farming worth it?" debate (surplus + cities + kings vs.
+      disease, harder labor, famine risk, inequality) — the same
+      celebrated-thing-had-costs spine as the other three. Three inline
+      SVGs: human-history timeline (farming = the final hour), a world map
+      of farming's independent origins, and a surplus-to-specialists flow.
+
+  S70 — content sprint (Science Gr6 IS3, regional climates):
+    • Fifth passage, third on the Science shelf: "The Rivers That Have
+      No Banks" (CA NGSS · MS-ESS2-6), Grade 6 — why two places at the
+      same latitude can have opposite climates. Next in framework order
+      after weather (IS2). Covers the standard head-on: unequal heating
+      plus Earth's ROTATION produce prevailing winds and looping ocean
+      currents, and those, not latitude alone, set regional climate.
+      Land/water heat capacity, currents, elevation and rain shadow all
+      land, with two California anchors students can check themselves
+      (San Francisco vs Sacramento in July; the Sierra rain shadow and
+      Nevada). Honesty beat = the "Gulf Stream keeps Europe warm" fact
+      everyone was taught is only half right — Seager et al. 2002 found
+      the westerlies crossing a heat-storing ocean, plus the Rockies
+      bending the continental wind pattern, do more of the work. Three
+      inline SVGs: the same-latitude puzzle, a still-Earth vs spinning-
+      Earth wind comparison, and a Sierra rain-shadow cutaway.
+
+  S71 — SKIPPED. A file by that name was produced by a parallel chat
+      session writing to the same outputs folder; it was an unfinished
+      build with no new passage. Rather than have two different S71s in
+      circulation, this sprint took the next free number. If you find an
+      S71-Reading_Hub.html anywhere, it is not part of this lineage.
+
+  S72 — content sprint (Social studies 6.2) + first DATA-DERIVED map:
+    • Sixth passage, third on the Social studies shelf: "The Cities the
+      Rivers Made" (CA HSS · 6.2), Grade 6 — Mesopotamia, Egypt and Kush.
+      Spine: a flooding river in dry country produces surplus, and the
+      river's TEMPERAMENT shapes the society. The Nile's predictable
+      flood plus hard natural borders → one kingdom for three millennia;
+      the erratic Tigris/Euphrates on an open plain → rival city-states
+      that had to invent organization (and writing, which began as
+      bookkeeping) to survive. Kush gets real weight, not a footnote:
+      Piye's conquest, the Kushite pharaohs, Meroë's iron, and more
+      pyramids standing in Sudan than in Egypt. Honesty beat = Meroitic
+      is still undeciphered, so nearly everything we say about Kush comes
+      from its rivals' records — what we know is shaped by whose writing
+      we can still read. Closing note: the Euphrates has wandered and Ur,
+      once a seaport, now sits ~250 km from the sea.
+
+    • MAP PIPELINE (new, and reusable — see build_map_styled.py):
+      The map figure is generated from Natural Earth public-domain data
+      rather than drawn by hand, because coastlines and river courses are
+      truth claims a reader cannot check. Land from ne_50m_land, rivers
+      from ne_50m_rivers_lake_centerlines, equirectangular projection,
+      Sutherland-Hodgman clip, sub-pixel RDP simplification. 14.7 KB.
+      Three traps worth remembering for the next map:
+        1. Natural Earth files one river under SEVERAL names along its
+           length. Euphrates = Firat + Al Furat + Euphrates; Tigris =
+           Dicle + Tigris; below the confluence both become Shatt al
+           Arab; the Nile splits into Rosetta and Damietta branches.
+           Miss a name and the river stops dead in open desert.
+        2. The rivers layer contains MODERN canals (Suez, Ismailiya,
+           Gharraf). Excluded by name; the build asserts they stay out.
+        3. Hand-placed river labels drift onto the wrong river. Labels
+           are now computed as a perpendicular offset from their own
+           geometry, with rotation read off the local bearing.
+      Verification, since figures cannot always be viewed: nine ancient
+      cities checked against their rivers (3-16 km), eight land/sea
+      probes, river termini confirmed to reach the coastline, and a
+      label-collision detector over estimated text boxes.
 
   Design: palette, type, paw mark and header chrome are lifted verbatim
   from games.html / index.html so the three pages read as one product.
@@ -34,12 +145,90 @@
   cleanly rather than half-loaded (handled in the state layer, unchanged
   from S61).
 
-  ── Still to do (later sprints) ───────────────────────────────────────
-    • More passages (Grade 8 U.S. history is the obvious next lane)
+  ── Still to do (near-term sprints) ───────────────────────────────────
+    • More passages — march each shelf down its CA framework order,
+      alternating shelves so both grow (see CONTENT PIPELINE below)
     • Teach games.html's Save button to fold the reading blob into the
       same export envelope, so students still save one file to Drive
     • Add a "Reading" cross-link to the games.html header
-    • index.html card still reads "Coming soon" — flip it once this ships
+    • index.html reading card is already flipped to "Now open" (done)
+
+  ── Content pipeline (framework order — Kelly's standing instruction) ──
+  Kelly doesn't teach these subjects and asked us to simply follow the
+  California framework sequence within each shelf. Alternate shelves each
+  sprint. What's shipped and what's next:
+
+    SCIENCE  (CA NGSS Preferred Integrated Model, grade 6 → 8):
+      Gr6 IS1  Earth/Life systems ....... plate-tectonics      ✓ (S65)
+      Gr6 IS2  weather .................. weather-engine       ✓ (S67)
+      Gr6 IS3  regional climates ........ regional-climates    ✓ (S70)
+      Gr6 IS4  global warming / living systems ... NEXT science lane
+      Gr7 IS1  everything is made of atoms → ... → Gr8
+
+    SOCIAL STUDIES  (CA HSS, grade 6 → 8):
+      Gr6 6.1  Paleolithic → Agricultural Revolution . agricultural-revolution ✓ (S69)
+      Gr6 6.2  Mesopotamia, Egypt, Kush . river-civilizations ✓ (S72)
+      Gr6 6.3  Ancient Hebrews    6.4 Greece   6.5 India
+      Gr6 6.6  China              6.7 Rome
+      Gr7 ...  Medieval & Early Modern → Gr8 US History
+      Gr8 8.12 Industrial expansion .... transcontinental-railroad ✓ (S66)
+               (shipped out of order; the shelf fills in from 6.1)
+
+    Alternating cadence: last was SOCIAL 6.2 (S72), so the next two are
+    SCIENCE Gr6 IS4 (global warming / living systems), then SOCIAL 6.3
+    (Ancient Hebrews).
+
+  ── Going-live horizon (the standing plan) ────────────────────────────
+  This hub is heading toward a real website, not a local-storage toy.
+  The guiding split: PASSAGES are public, read-only CONTENT and always
+  live as static files served over HTTP (Pages now, Firebase Hosting
+  later) — they never go in the database. Answers + progress are private
+  STATE — that, and only that, is what Firebase eventually holds. The
+  content/shell split below is not a Pages convenience we throw away; it
+  is the exact seam the live site runs on, so it is phase 1 of going live.
+
+    Phase 1  (now → ~15 passages): single self-contained file, batch
+             deploys. GitHub Pages + localStorage. Simple, low-stakes.
+    Phase 2  (~15 passages — a dedicated SPLIT sprint): thin reading.html
+             shell + one static file per passage (or per shelf) + a JSON
+             manifest the shell reads. Content and state now physically
+             separate. Still Pages, still localStorage. NOTE: a split hub
+             must be opened from the Pages URL (fetch needs an http
+             origin) — this trades away the open-from-USB offline copy.
+    Phase 3  (Firebase state swap): replace ONLY the localStorage
+             hydrate/persist inside _readingBackend with Firebase.
+             Teacher Google sign-in + class-code student identity land
+             here. Passages do not move. Spark free tier; static content
+             = zero Firestore reads.
+    Phase 4  (Firebase Hosting + domain): lift the same static files off
+             Pages onto Hosting for HTTPS + a real URL; serve reading and
+             games together.
+    Phase 5  (white-label fork): swap the manifest + theming config;
+             passages shared across schools or scoped per tenant.
+
+  ── Two commitments held on EVERY sprint from here (so nothing unwinds) ─
+    1. The manifest stays DATA, not code. The list of passages, shelves,
+       and grade tags lives as (eventually) a JSON file the shell reads —
+       never hardcoded. This is what makes Phase 5's per-school catalogs
+       and teacher-assigned passages possible.
+    2. State stays behind the ONE _readingBackend interface, with the
+       in-memory `data` cache as the buffer between sync render and async
+       storage. localStorage is synchronous; Firebase is not. Rule:
+       bulk-fetch state into the cache once at boot/login (async), render
+       from the cache (sync), fire writes debounced in the background.
+       The async lives only in hydrate/persist; render code never changes
+       across the Firebase swap. Student / room / tenant fields ride in
+       the state shape from the start so the model doesn't reshape on the
+       way over the wire.
+
+  DEPLOY CADENCE: don't deploy every passage — each drag-and-drop upload
+  is a risk op, and in a monolith one bad upload takes down all of them.
+  Deploy per full shelf or ~5 passages, timed to when students need them.
+  Drag-and-drop ONLY (never the web editor — it silently empties large
+  files). Sxx files are the source of truth; roll back via git history or
+  by re-uploading the prior Sxx. Only ever deploy a sprint whose tests
+  are green. (Reading is the easier hub to take live — mostly solo, so no
+  real-time room sync — which de-risks the harder games port that follows.)
   ═══════════════════════════════════════════════════════════════════════
 -->
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -752,6 +941,11 @@ const READING_STORAGE_KEY = 'cougar-reading-hub-v1';
    mismatched saves are discarded cleanly rather than half-loaded. */
 const READING_REGISTRY = [
   { key: 'plate-tectonics', stateVersion: 1 },
+  { key: 'transcontinental-railroad', stateVersion: 1 },
+  { key: 'weather-engine', stateVersion: 1 },
+  { key: 'agricultural-revolution', stateVersion: 1 },
+  { key: 'regional-climates', stateVersion: 1 },
+  { key: 'river-civilizations', stateVersion: 1 },
 ];
 
 const READING_REGISTRY_MAP =
@@ -844,6 +1038,80 @@ const S_MECH =
 const S_CONVEYOR =
   "The continents do not bulldoze their way through the ocean floor; they ride along on top of it, the way books ride on a moving conveyor belt.";
 
+/* Transcontinental Railroad \u2014 sentences reused verbatim in body + evidence Qs */
+const R_BEFORE =
+  "Before the railroad, crossing the country meant months of hard travel by wagon train, or a long and stormy sea voyage all the way around the tip of South America.";
+const R_TUNNEL =
+  "In the hardest granite, a full day of drilling and blasting might push a tunnel forward less than a single foot.";
+const R_CHINESE =
+  "By the end, Chinese immigrants made up most of the Central Pacific's workers, and they were handed the most dangerous jobs on the whole line.";
+const R_ERASED =
+  "When a famous photograph was staged to celebrate the finish, not one of the Chinese workers who had laid the final miles of track was invited to stand in it.";
+const R_NATIVE =
+  "The tracks pushed straight through land that Native nations had lived on for generations and been promised by treaty, and the railroad carried in hunters who slaughtered the buffalo those nations relied on.";
+
+
+/* Weather engine \u2014 sentences reused verbatim in body + evidence Qs */
+const W_SUN =
+  "Almost every gust of wind, drifting cloud, and drop of rain can be traced back to a single source of energy: the Sun.";
+const W_UNEVEN =
+  "Sunlight strikes the equator almost straight on, packing its energy into a small area, while the same sunlight hits the poles at a low, glancing angle and spreads thin across the ground.";
+const W_CONVECTION =
+  "Warm air is lighter than cool air, so it rises; cooler air slides in underneath to take its place, and that endless shuffling of air is what we feel as wind.";
+const W_WATER =
+  "As that rising air cools, the water vapor it carries clumps into the tiny droplets that build clouds and, in time, fall back to the ground as rain.";
+const W_FRONT =
+  "When a mass of warm air and a mass of cold air crash into each other, the warm air is shoved upward, and the sudden cooling can stack up towering clouds and set off a storm.";
+const W_CHAOS =
+  "A change too small to measure in one place can grow, day by day, into a storm somewhere else, which is why even the finest forecasts blur past a week or so.";
+
+
+/* Agricultural Revolution \u2014 sentences reused verbatim in body + evidence Qs */
+const A_ARCH =
+  "Because no one had yet invented writing, nearly everything we know about these first people comes from the objects they left behind: their stone tools, charred seeds, animal bones, and paintings on cave walls.";
+const A_ADAPT =
+  "These wanderers spread into nearly every corner of the planet \u2014 freezing tundra, dense jungle, bone-dry desert \u2014 inventing new tools, clothing, and shelter to survive in each one.";
+const A_CLIMATE =
+  "As the last Ice Age ended and the world warmed, wild wheat and barley grew thick across a region called the Fertile Crescent, and people slowly shifted from gathering those grains to planting them on purpose.";
+const A_SURPLUS =
+  "For the first time, people could grow more food than they needed to eat, and that extra food freed some of them to do other things entirely: to shape pots, raise temples, march in armies, or rule.";
+const A_COST =
+  "The bones of early farmers reveal a hard truth: many were shorter, sicker, and worked longer hours than the hunter-gatherers who had come before them.";
+
+
+
+/* Regional climates \u2014 sentences reused verbatim in body + evidence Qs */
+const C_LATITUDE =
+  "Two cities can sit at exactly the same distance from the equator and still have winters that feel like they belong on different planets.";
+const C_SPIN =
+  "Because the planet spins beneath its own atmosphere, moving air gets bent sideways instead of traveling straight north or south, which is why the wind in any given place tends to arrive from the same direction year after year.";
+const C_OCEAN =
+  "Water heats up and cools down far more slowly than land does, so the ocean holds onto summer's warmth deep into the winter and then hands it back to the air passing over it.";
+const C_CURRENT =
+  "Enormous looping currents drag warm water thousands of miles from the tropics toward the poles and haul cold water back the other way, moving heat around the planet like a slow conveyor belt.";
+const C_RAINSHADOW =
+  "Air forced to climb a mountain range cools as it rises and dumps its water as rain or snow on the way up, then slides down the far side warm and wrung dry, leaving a desert in the mountains' shadow.";
+const C_REVISED =
+  "When scientists finally measured how much warmth the current actually delivers, they found that winds blowing across a heat-storing ocean accounted for more of Europe's mildness than the current itself.";
+
+
+
+/* Mesopotamia, Egypt, Kush \u2014 sentences reused verbatim in body + evidence Qs */
+const M_SILT =
+  "Every flood left behind a layer of silt \u2014 fine dark mud scraped off distant highlands and carried downstream \u2014 and that borrowed soil is what let farmers grow far more food than they could eat.";
+const M_WILD =
+  "The Tigris and Euphrates flooded without warning, sometimes in the wrong season and sometimes hard enough to erase a village, so staying alive meant digging canals and raising dikes together on a scale no single family could manage.";
+const M_LEDGER =
+  "The oldest writing anyone has found is not poetry or prayer but bookkeeping: tallies of grain, sheep, and oil pressed into wet clay so a temple could keep track of what it was owed.";
+const M_GIFT =
+  "The Nile's flood arrived in nearly the same weeks every single year, rising and falling on a schedule steady enough to build a calendar on.";
+const M_SHIELD =
+  "Desert on both sides, rocky rapids upstream, and the sea to the north left Egypt hard to invade and unusually easy to govern as one long ribbon of river.";
+const M_PHARAOHS =
+  "For most of a century the pharaohs on Egypt's throne were Kushite kings from the south, ruling the country that had once ruled them.";
+const M_UNREAD =
+  "Meroitic can be sounded out but not understood \u2014 scholars can pronounce the words and still have no idea what they mean \u2014 so the kingdom's own account of itself stays locked shut.";
+
 
 /* ---- the passages ---- */
 const PASSAGES = {
@@ -851,8 +1119,8 @@ const PASSAGES = {
     key: 'plate-tectonics',
     subject: 'science',
     subjectLabel: 'Science',
-    grade: 'Grades 6\u20138',
-    grades: [6, 7, 8],
+    grade: 'Grade 6',
+    grades: [6],
     standard: 'CA NGSS \u00B7 MS-ESS2-3',
     minutes: 6,
     figures: {
@@ -978,6 +1246,836 @@ const PASSAGES = {
         id: 'q5', type: 'short',
         prompt: `In your own words: Wegener had a lot of strong evidence, yet his idea was rejected for almost fifty years. Explain why having good evidence wasn't enough to convince other scientists.`,
         sample: `Wegener could show that the continents fit together and shared the same fossils, rocks, and climate clues. But he couldn't explain HOW continents could move \u2014 what force pushed them. Scientists wanted the cause, not just the clues that it happened. His idea was only accepted after seafloor spreading revealed the mechanism: new seafloor forms at the mid-ocean ridge and carries the continents along.`,
+      },
+    ],
+  },
+
+  'transcontinental-railroad': {
+    key: 'transcontinental-railroad',
+    subject: 'social',
+    subjectLabel: 'Social studies',
+    grade: 'Grade 8',
+    grades: [8],
+    standard: 'CA HSS \u00B7 8.12',
+    minutes: 7,
+    figures: {
+      race: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A schematic of the race: the Central Pacific built 690 miles east from Sacramento, California, while the Union Pacific built 1,086 miles west from Omaha, Nebraska. The two lines met at Promontory Summit, Utah, on May 10, 1869.">
+    <rect x="0" y="0" width="640" height="360" fill="#FAFCFB"/>
+    <text x="30" y="42" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#9CADA5" letter-spacing="1.5">WEST</text>
+    <text x="610" y="42" text-anchor="end" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#9CADA5" letter-spacing="1.5">EAST</text>
+
+    <!-- build-direction banners -->
+    <g font-family="Inter, sans-serif">
+      <text x="168" y="90" text-anchor="middle" font-size="13" font-weight="700" fill="#8F6500" letter-spacing="0.4">CENTRAL PACIFIC</text>
+      <g stroke="#B98200" stroke-width="3" fill="none" stroke-linecap="round"><path d="M112 106 H226"/></g>
+      <path d="M226 106 l-11 -6 v12 z" fill="#B98200"/>
+      <text x="168" y="124" text-anchor="middle" font-size="11" fill="#6B7E76">building east from Sacramento</text>
+
+      <text x="474" y="90" text-anchor="middle" font-size="13" font-weight="700" fill="#065F5C" letter-spacing="0.4">UNION PACIFIC</text>
+      <g stroke="#07877F" stroke-width="3" fill="none" stroke-linecap="round"><path d="M530 106 H346"/></g>
+      <path d="M346 106 l11 -6 v12 z" fill="#07877F"/>
+      <text x="474" y="124" text-anchor="middle" font-size="11" fill="#6B7E76">building west from Omaha</text>
+    </g>
+
+    <!-- Sierra Nevada sitting at the western start -->
+    <g>
+      <text x="120" y="166" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#6B7E76">Sierra Nevada</text>
+      <path d="M92 210 L120 176 L146 210 Z" fill="#7A8896"/>
+      <path d="M120 210 L152 172 L184 210 Z" fill="#556472"/>
+      <path d="M144 184 L152 172 L162 186 Z" fill="#EAF1F4"/>
+    </g>
+
+    <!-- mileage -->
+    <text x="212" y="198" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#8F6500">690 miles</text>
+    <text x="436" y="198" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#065F5C">1,086 miles</text>
+
+    <!-- route -->
+    <line x1="70" y1="210" x2="280" y2="210" stroke="#B98200" stroke-width="6" stroke-linecap="round"/>
+    <line x1="280" y1="210" x2="590" y2="210" stroke="#07877F" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- endpoints -->
+    <g font-family="Inter, sans-serif">
+      <circle cx="70" cy="210" r="7" fill="#fff" stroke="#8F6500" stroke-width="3"/>
+      <text x="70" y="240" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0A1814">Sacramento</text>
+      <text x="70" y="256" text-anchor="middle" font-size="10.5" fill="#9CADA5">California</text>
+      <circle cx="590" cy="210" r="7" fill="#fff" stroke="#065F5C" stroke-width="3"/>
+      <text x="590" y="240" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0A1814">Omaha</text>
+      <text x="590" y="256" text-anchor="middle" font-size="10.5" fill="#9CADA5">Nebraska</text>
+    </g>
+
+    <!-- Promontory meeting point + golden spike -->
+    <line x1="280" y1="210" x2="280" y2="292" stroke="#B98200" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="280" cy="210" r="11" fill="#FFD966" stroke="#B98200" stroke-width="3"/>
+    <path d="M280 204 v12 M274 210 h12" stroke="#8F6500" stroke-width="2.4" stroke-linecap="round"/>
+    <rect x="200" y="294" width="160" height="40" rx="9" fill="#FBF6E7" stroke="#F6ECC8"/>
+    <text x="280" y="311" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#8F6500">Promontory Summit, Utah</text>
+    <text x="280" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" fill="#6B7E76">the rails meet \u00B7 May 10, 1869</text>
+  </svg>` },
+
+      tunnel: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A cutaway of the Sierra Nevada showing a tunnel blasted through solid granite. In the hardest rock, crews advanced less than a foot a day.">
+    <rect x="0" y="0" width="640" height="340" fill="#FAFCFB"/>
+    <!-- mountain -->
+    <path d="M50 280 L235 92 L360 175 L470 78 L610 280 Z" fill="#6A7A88"/>
+    <path d="M235 92 L360 175 L300 280 L150 280 Z" fill="#556472" opacity="0.5"/>
+    <path d="M222 112 L235 92 L250 110 Z" fill="#EAF1F4"/>
+    <path d="M457 98 L470 78 L485 98 Z" fill="#EAF1F4"/>
+    <text x="150" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#CFD9DE" letter-spacing="1">SOLID GRANITE</text>
+
+    <!-- tunnel bored through the base -->
+    <rect x="165" y="232" width="310" height="42" rx="6" fill="#22302B"/>
+    <line x1="150" y1="253" x2="490" y2="253" stroke="#EAF1F4" stroke-width="2" stroke-dasharray="7 6" opacity="0.85"/>
+    <line x1="180" y1="266" x2="460" y2="266" stroke="#7A8896" stroke-width="2"/>
+    <text x="320" y="224" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#465A63">tunnel blasted through the rock</text>
+
+    <!-- blast spark -->
+    <g stroke="#E55A4A" stroke-width="2.6" stroke-linecap="round">
+      <path d="M320 253 v-13 M320 253 v13 M320 253 h-13 M320 253 h13 M311 244 l-9 -9 M329 244 l9 -9 M311 262 l-9 9 M329 262 l9 9"/>
+    </g>
+
+    <!-- callout -->
+    <rect x="150" y="298" width="340" height="32" rx="8" fill="#FBF6E7" stroke="#F6ECC8"/>
+    <text x="320" y="318" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#8F6500">In the hardest granite: less than a foot a day</text>
+  </svg>` },
+
+      timesaved: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two bars comparing travel time from coast to coast: about six months before the railroad versus about one week after 1869.">
+    <rect x="0" y="0" width="640" height="250" fill="#FAFCFB"/>
+    <!-- before -->
+    <text x="30" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6B7E76" letter-spacing="0.6">BEFORE THE RAILROAD</text>
+    <rect x="30" y="70" width="576" height="36" rx="7" fill="#E55A4A"/>
+    <text x="592" y="93" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#fff">about 6 months</text>
+    <!-- after -->
+    <text x="30" y="158" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6B7E76" letter-spacing="0.6">AFTER 1869</text>
+    <rect x="30" y="168" width="22" height="36" rx="5" fill="#07877F"/>
+    <text x="64" y="191" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#065F5C">about 1 week</text>
+    <text x="320" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#9CADA5">coast to coast \u00B7 New York to San Francisco</text>
+  </svg>` },
+    },
+    title: 'The Race to the Golden Spike',
+    teaser: 'Two companies built one railroad from opposite ends, racing toward each other for years \u2014 and the famous photo of the finish left out the people who did the hardest work.',
+    body: [
+      { t: 'p', cls: 'lead', html: `Imagine planning a trip across the entire United States \u2014 and knowing it will take half a year. ${R_BEFORE} Whole families gave up, fell sick, or never made it. In the middle of the 1800s, a bold idea took hold: what if you could cross the whole country in a single week, riding on rails of iron?` },
+      { t: 'p', html: `The trouble was the sheer size of the job. Nearly two thousand miles of track would have to be laid across rivers, deserts, and mountains \u2014 much of it land with no towns, no roads, and no supplies waiting. So in 1862, Congress tried a clever trick to speed things up. Instead of hiring one company, it hired <strong>two</strong>, and pointed them straight at each other. The <strong>Central Pacific</strong> would start in Sacramento, California, and build east. The <strong>Union Pacific</strong> would start near Omaha, Nebraska, and build west. Somewhere in the middle the two lines would meet \u2014 and the sooner they met, the sooner the country would be joined. The race was on.` },
+      { t: 'fig', fig: 'race', cap: `<b>A race from both ends.</b> The Central Pacific laid 690 miles of track heading east; the Union Pacific laid 1,086 miles heading west. The two lines met at Promontory Summit, Utah, on May 10, 1869.` },
+      { t: 'h', text: 'The mountain that fought back' },
+      { t: 'p', html: `The two companies faced very different problems. The Union Pacific rolled west across the flat, open Great Plains, where the biggest challenges were distance and speed. The Central Pacific ran into a wall almost at once: the <strong>Sierra Nevada</strong>, a range of solid granite mountains standing directly in its path. There was no going around. The only way was through.` },
+      { t: 'p', html: `Crews had to carve tunnels straight through the rock by hand \u2014 drilling holes, packing them with black powder, and setting off blast after blast. ${R_TUNNEL} At that pace, a single tunnel could take more than a year. Winters buried the worksite under snow so deep that crews dug passages through the snow just to reach the tunnels in the rock.` },
+      { t: 'p', html: `The Central Pacific was desperate for workers, and few people wanted such brutal, dangerous labor. The company began hiring <strong>Chinese immigrants</strong> \u2014 at first a few, then thousands. ${R_CHINESE} They were lowered over cliffs in baskets to set explosives, worked straight through freezing winters, and were paid less than other workers while being given no housing of their own. Without them, the railroad through the mountains might never have been finished \u2014 yet for a long time, history books barely mentioned them at all.` },
+      { t: 'fig', fig: 'tunnel', cap: `<b>Through solid rock.</b> To cross the Sierra Nevada, crews blasted tunnels through granite, sometimes gaining less than a foot in a day. Chinese laborers took on the most dangerous work of all.` },
+      { t: 'h', text: 'Across the plains' },
+      { t: 'p', html: `Out on the Great Plains, the Union Pacific could move fast, laying several miles of track on a good day. Many of its workers were Irish immigrants and veterans of the recent Civil War. But that speed came at a cost the railroad companies did not pay. ${R_NATIVE} For the Native peoples of the plains, the "great achievement" arriving on iron rails meant broken promises, stolen land, and a way of life torn apart.` },
+      { t: 'h', text: 'The golden spike' },
+      { t: 'p', html: `On May 10, 1869, the two railroads finally came together at <strong>Promontory Summit, Utah</strong>. To mark the moment, a special <strong>golden spike</strong> was tapped into the last rail, and the news raced across the country by telegraph: the coasts were joined. Crowds cheered. Photographers climbed onto the two locomotives as they met nose to nose. ${R_ERASED}` },
+      { t: 'p', html: `That missing detail matters. The railroad was a real wonder \u2014 but the cheerful photograph told only part of the story. The people who had done the hardest, deadliest work were left out of the picture, and the nations who lost the most were nowhere in the frame. Celebrating what was built is fair. So is remembering who built it, and what it cost.` },
+      { t: 'fig', fig: 'timesaved', cap: `<b>A country made smaller.</b> A journey that once swallowed about six months could now be made in roughly a week.` },
+      { t: 'p', html: `The finished railroad changed almost everything. Goods, mail, and people crossed the continent in days instead of months. New towns sprang up along the tracks; the country even adopted standard time zones so the trains could keep a schedule; and East and West were tied together as never before. One of the great engineering feats of its century, it was built by many hands \u2014 including thousands the famous photograph forgot.` },
+    ],
+    questions: [
+      {
+        id: 'q1', type: 'mc',
+        prompt: `Why did Congress hire two companies to build the railroad from opposite ends at the same time?`,
+        options: [
+          `So the two companies could compete to see which one built better track.`,
+          `So the railroad could be finished far faster, with both ends racing toward a meeting point in the middle.`,
+          `Because a single company was not allowed to build across so many states.`,
+          `So that if one company ran out of money, the other could take over the whole route.`,
+        ],
+        answer: 1,
+        explain: `Two crews building toward each other at the same time covered the enormous distance in a handful of years instead of decades \u2014 speed was the whole point.`,
+      },
+      {
+        id: 'q2', type: 'mc',
+        prompt: `What made the Central Pacific's part of the job so much harder than the Union Pacific's at the start?`,
+        options: [
+          `The Central Pacific had to cross the wide, flat Great Plains.`,
+          `The Central Pacific ran out of money before it laid any track at all.`,
+          `The Central Pacific had to blast its way through the granite mountains of the Sierra Nevada.`,
+          `The Central Pacific was not allowed to hire enough workers to do the job.`,
+        ],
+        answer: 2,
+        explain: `The Sierra Nevada stood right in the Central Pacific's path. With no way around, crews had to tunnel through solid granite \u2014 slow, deadly work.`,
+      },
+      {
+        id: 'q3', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `The people who did the most dangerous work were often left out of the celebration.`,
+        options: [ R_ERASED, R_BEFORE, R_TUNNEL, R_NATIVE ],
+        answer: 0,
+        explain: `The Chinese workers laid the final miles of track, yet the famous celebration photograph did not include a single one of them.`,
+      },
+      {
+        id: 'q4', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `Building the railroad came at a heavy cost to Native nations.`,
+        options: [ R_NATIVE, R_TUNNEL, R_CHINESE, R_BEFORE ],
+        answer: 0,
+        explain: `The tracks cut through land promised to Native nations by treaty, and the railroad brought hunters who destroyed the buffalo those nations depended on.`,
+      },
+      {
+        id: 'q5', type: 'short',
+        prompt: `In your own words: the finished railroad was celebrated as one of the great achievements of its time, and the famous photograph at Promontory made it look like a happy ending. Explain why that photograph does not tell the whole story.`,
+        sample: `The railroad really was an amazing feat, but the photo left out the people who paid the highest price. Chinese immigrants did the most dangerous work \u2014 blasting tunnels through granite, hanging over cliffs to set explosives \u2014 for less pay, yet not one of them was in the picture. And the railroad crossed land that had been promised to Native nations, breaking treaties and destroying the buffalo they relied on. The achievement was real, but the cheerful photograph only showed the celebration, not the cost or the people who were left out.`,
+      },
+    ],
+  },
+
+  'weather-engine': {
+    key: 'weather-engine',
+    subject: 'science',
+    subjectLabel: 'Science',
+    grade: 'Grade 6',
+    grades: [6],
+    standard: 'CA NGSS \u00B7 MS-ESS2-5',
+    minutes: 7,
+    figures: {
+      angle: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels comparing the angle of sunlight. Near the equator a beam strikes the ground straight on and lands on a small area, giving strong heating. Near the poles the same beam strikes at a slant and spreads over a much larger area, giving weak heating.">
+    <rect x="0" y="0" width="640" height="320" fill="#FAFCFB"/>
+    <line x1="320" y1="28" x2="320" y2="300" stroke="#E2EBE6" stroke-width="2"/>
+
+    <text x="160" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8F6500" letter-spacing="0.4">NEAR THE EQUATOR</text>
+    <circle cx="160" cy="72" r="20" fill="#FFD966" stroke="#B98200" stroke-width="2.5"/>
+    <g stroke="#B98200" stroke-width="3" stroke-linecap="round"><path d="M132 98 V212"/><path d="M160 98 V212"/><path d="M188 98 V212"/></g>
+    <path d="M132 214 l-5 -11 h10 z" fill="#B98200"/><path d="M160 214 l-5 -11 h10 z" fill="#B98200"/><path d="M188 214 l-5 -11 h10 z" fill="#B98200"/>
+    <line x1="48" y1="230" x2="272" y2="230" stroke="#2C3E38" stroke-width="2.5"/>
+    <rect x="126" y="222" width="68" height="8" fill="#E55A4A"/>
+    <text x="160" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#C6483B">small area</text>
+    <text x="160" y="275" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">strong heating</text>
+
+    <text x="480" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#065F5C" letter-spacing="0.4">NEAR THE POLES</text>
+    <circle cx="388" cy="72" r="20" fill="#FFD966" stroke="#B98200" stroke-width="2.5"/>
+    <g stroke="#7A8896" stroke-width="3" stroke-linecap="round"><path d="M408 94 L520 212"/><path d="M438 94 L550 212"/><path d="M468 94 L580 212"/></g>
+    <path d="M520 212 l-1 -11 l9 4 z" fill="#7A8896"/><path d="M550 212 l-1 -11 l9 4 z" fill="#7A8896"/><path d="M580 212 l-1 -11 l9 4 z" fill="#7A8896"/>
+    <line x1="360" y1="230" x2="610" y2="230" stroke="#2C3E38" stroke-width="2.5"/>
+    <rect x="470" y="222" width="132" height="8" fill="#9CADA5"/>
+    <text x="512" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6B7E76">large area</text>
+    <text x="512" y="275" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">same light, weak heating</text>
+  </svg>` },
+
+      breeze: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A sea-breeze convection loop. Warm air rises over sun-heated land, cooler air flows in from the sea to replace it, the air spreads out high above and sinks back down over the sea, forming a circular loop we feel as wind.">
+    <rect x="0" y="0" width="640" height="340" fill="#FAFCFB"/>
+    <circle cx="516" cy="52" r="22" fill="#FFD966" stroke="#B98200" stroke-width="2.5"/>
+    <g stroke="#B98200" stroke-width="2.5" stroke-linecap="round"><path d="M516 20 V10"/><path d="M551 52 H561"/><path d="M541 27 l7 -7"/><path d="M541 77 l7 7"/></g>
+
+    <rect x="0" y="264" width="300" height="76" fill="#8FB9C9"/>
+    <path d="M300 264 H640 V340 H300 Z" fill="#D8C9A8"/>
+    <path d="M300 264 q60 -26 130 0 t210 0 V264 Z" fill="#C6B489"/>
+    <text x="120" y="308" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0A5563" letter-spacing="1">SEA</text>
+    <text x="452" y="308" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#6E5A2E" letter-spacing="1">LAND</text>
+
+    <!-- convection loop (counter-clockwise) -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M432 256 V126" stroke="#E55A4A" stroke-width="4"/>
+      <path d="M432 118 H188" stroke="#6B7E76" stroke-width="3.5"/>
+      <path d="M180 126 V248" stroke="#07877F" stroke-width="4"/>
+      <path d="M190 250 H418" stroke="#07877F" stroke-width="4"/>
+    </g>
+    <path d="M432 118 l-6 12 h12 z" fill="#E55A4A"/>
+    <path d="M188 118 l12 -6 v12 z" fill="#6B7E76"/>
+    <path d="M180 248 l-6 -12 h12 z" fill="#07877F"/>
+    <path d="M418 250 l-12 -6 v12 z" fill="#07877F"/>
+
+    <text x="446" y="180" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#C6483B">warm air rises</text>
+    <text x="300" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">cooler air drifts back out</text>
+    <text x="305" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#065F5C">cool sea breeze</text>
+  </svg>` },
+
+      front: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A cold front. A wedge of cold air pushes under a warm air mass and shoves it upward. The rising warm air cools, forms a tall storm cloud, and rain falls beneath it.">
+    <rect x="0" y="0" width="640" height="340" fill="#FAFCFB"/>
+    <rect x="330" y="40" width="290" height="250" fill="#F6ECC8" opacity="0.55"/>
+    <text x="560" y="118" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8F6500" letter-spacing="0.5">WARM AIR</text>
+
+    <!-- cold air wedge pushing in from the left -->
+    <path d="M20 290 V196 H250 L340 290 Z" fill="#7FA8BC"/>
+    <text x="120" y="256" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0A3A4A" letter-spacing="0.5">COLD AIR</text>
+    <path d="M300 300 H150" stroke="#0A3A4A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M150 300 l12 -6 v12 z" fill="#0A3A4A"/>
+
+    <!-- warm air forced up the front -->
+    <path d="M330 286 C360 230 380 180 396 132" stroke="#E55A4A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M396 132 l-9 5 l2 -13 z" fill="#E55A4A"/>
+    <text x="360" y="214" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#C6483B" transform="rotate(-60 360 214)">warm air forced up</text>
+
+    <!-- storm cloud -->
+    <g fill="#8795A0">
+      <ellipse cx="410" cy="112" rx="70" ry="34"/>
+      <ellipse cx="360" cy="128" rx="42" ry="26"/>
+      <ellipse cx="460" cy="130" rx="46" ry="26"/>
+      <ellipse cx="410" cy="78" rx="46" ry="30"/>
+    </g>
+    <!-- rain -->
+    <g stroke="#5B8AA6" stroke-width="3" stroke-linecap="round">
+      <path d="M366 158 l-6 20"/><path d="M392 158 l-6 22"/><path d="M418 158 l-6 20"/><path d="M444 158 l-6 22"/><path d="M470 158 l-6 20"/>
+    </g>
+    <line x1="20" y1="290" x2="620" y2="290" stroke="#2C3E38" stroke-width="2.5"/>
+  </svg>` },
+    },
+    title: 'The Engine That Makes the Weather',
+    teaser: 'A thunderstorm looks like pure chaos \u2014 but trace it backward, step by step, and it all begins with a single sunbeam.',
+    body: [
+      { t: 'p', cls: 'lead', html: `On a hot afternoon you watch a towering cloud pile up in the sky, the air goes still, and then thunder cracks and the rain pours down. It can feel as if the weather has a mind of its own. But trace that storm backward, step by step, and you arrive somewhere surprising: about 93 million miles away, at the Sun. ${W_SUN}` },
+      { t: 'p', html: `Here is the strange part: the Sun does not warm the Earth evenly. ${W_UNEVEN} Because our planet is a ball, the middle \u2014 the equator \u2014 always runs hot, while the top and bottom \u2014 the poles \u2014 stay cold. That difference in temperature is not a small detail. It is the engine that drives almost all of our weather.` },
+      { t: 'fig', fig: 'angle', cap: `<b>Why the equator runs hot.</b> The same beam of sunlight lands on a small patch near the equator (strong heating) but smears across a much larger patch near the poles (weak heating).` },
+      { t: 'h', text: 'The engine: warm air on the move' },
+      { t: 'p', html: `Air answers that heat in a simple way. ${W_CONVECTION} You can feel this at the beach on a sunny day. Land heats up faster than water, so warm air rises over the land and cooler air flows in off the sea to replace it \u2014 the pleasant breeze that always seems to blow in from the water in the afternoon.` },
+      { t: 'fig', fig: 'breeze', cap: `<b>A breeze is a loop.</b> Warm air rises over the sun-baked land, cooler air slides in from the sea to take its place, and the air circles back around \u2014 a convection loop you feel as wind.` },
+      { t: 'p', html: `Water makes the story bigger. The Sun lifts water vapor into the air from oceans, lakes, and puddles. ${W_WATER} That is why clouds tend to appear where air is rising, and why the rain that soaks your backyard may have begun as sunlight pulling moisture off a sea you have never seen.` },
+      { t: 'h', text: 'When air masses collide' },
+      { t: 'p', html: `Enormous blocks of air, called <strong>air masses</strong>, take on the character of the place they form over \u2014 warm and damp above a tropical ocean, cold and dry above the frozen north. As these giants drift across the planet they bump into one another, and the boundary where they meet is called a <strong>front</strong>. ${W_FRONT} Most of the dramatic weather you notice \u2014 the sudden downpour, the line of thunderstorms, the temperature that drops ten degrees in an hour \u2014 happens along these fronts.` },
+      { t: 'fig', fig: 'front', cap: `<b>Cold meets warm.</b> A cold air mass wedges under a warm one and shoves it upward. The rising warm air cools, its moisture builds a towering cloud, and a storm is born.` },
+      { t: 'h', text: 'Why no one can predict it perfectly' },
+      { t: 'p', html: `It helps to keep two words straight. <strong>Weather</strong> is what the sky is doing right now \u2014 today's rain, this afternoon's wind. <strong>Climate</strong> is the pattern over many years \u2014 what a place is usually like. Weather is a mood; climate is a personality. A single cold week no more changes a place's climate than one bad day changes who you are.` },
+      { t: 'p', html: `You might expect that once scientists understood these rules, they could predict the weather as far ahead as they liked. They cannot, and there is a deep reason why. ${W_CHAOS} The atmosphere is so sensitive that a nudge far too small to notice can swell into something huge, given enough time. Scientists understand exactly how weather is made, yet they still cannot say precisely what it will do next month. Understanding how a system works, it turns out, is not the same as being able to predict its every move.` },
+      { t: 'p', html: `So the next time the wind tugs at your jacket or rain streaks the window, remember what you are really feeling: energy from a star, poured onto a spinning ball of rock and water and passed restlessly around the planet by moving air. One simple engine, running day and night \u2014 and out of it comes every kind of weather there is.` },
+    ],
+    questions: [
+      {
+        id: 'q1', type: 'mc',
+        prompt: `Where does nearly all of the energy that powers the weather ultimately come from?`,
+        options: [
+          `The heat stored deep inside the Earth.`,
+          `The Sun.`,
+          `The rise and fall of the ocean tides.`,
+          `The friction of the wind dragging against the ground.`,
+        ],
+        answer: 1,
+        explain: `Sunlight is the original source. It heats the planet unevenly, and everything else \u2014 wind, clouds, rain \u2014 follows from that.`,
+      },
+      {
+        id: 'q2', type: 'mc',
+        prompt: `Why does the equator stay so much warmer than the poles?`,
+        options: [
+          `The equator is millions of miles closer to the Sun than the poles are.`,
+          `The poles sit in shadow and never receive any sunlight at all.`,
+          `Sunlight hits the equator straight on but strikes the poles at a slant, spreading the same energy over a larger area.`,
+          `The equator is covered in clouds that trap all of the Sun's heat.`,
+        ],
+        answer: 2,
+        explain: `It comes down to angle, not distance. Head-on sunlight at the equator lands concentrated; the same light hits the poles at a glancing angle and spreads thin, so it warms less.`,
+      },
+      {
+        id: 'q3', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `Wind is caused mainly by warm air rising and cooler air moving in to take its place.`,
+        options: [ W_CONVECTION, W_SUN, W_UNEVEN, W_CHAOS ],
+        answer: 0,
+        explain: `Rising warm air, with cooler air rushing in beneath it, is exactly the movement of air that we feel as wind.`,
+      },
+      {
+        id: 'q4', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `There is a limit to how far ahead even the best forecasters can predict the weather.`,
+        options: [ W_CHAOS, W_CONVECTION, W_WATER, W_FRONT ],
+        answer: 0,
+        explain: `Because a difference too tiny to measure can grow into a storm over time, forecasts lose their reliability after about a week.`,
+      },
+      {
+        id: 'q5', type: 'short',
+        prompt: `In your own words: the Sun is about 93 million miles away, yet this passage says it is responsible for the wind and rain outside your window. Explain how the Sun's energy ends up producing weather here on Earth.`,
+        sample: `The Sun heats the Earth, but not evenly \u2014 sunlight hits the equator straight on and the poles at a slant, so some places get much warmer than others. Warm air is light and rises, and cooler air rushes in underneath to replace it, which is the wind. The Sun also lifts water vapor into the air; when that air rises and cools, the vapor forms clouds and falls as rain. So the wind and rain outside are really the Sun's energy being moved around the planet by air and water.`,
+      },
+    ],
+  },
+
+  'agricultural-revolution': {
+    key: 'agricultural-revolution',
+    subject: 'social',
+    subjectLabel: 'Social studies',
+    grade: 'Grade 6',
+    grades: [6],
+    standard: 'CA HSS \u00B7 6.1',
+    minutes: 7,
+    figures: {
+      timeline: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The whole human story shown as one bar. Hunter-gatherer life fills about 95 percent of it, and farming appears only in the small gold sliver at the far right, roughly the last few percent.">
+    <rect x="0" y="0" width="640" height="200" fill="#FAFCFB"/>
+    <text x="40" y="42" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6B7E76" letter-spacing="0.8">THE HUMAN STORY</text>
+    <rect x="40" y="58" width="560" height="42" rx="9" fill="#07877F"/>
+    <path d="M566 58 H591 a9 9 0 0 1 9 9 V91 a9 9 0 0 1 -9 9 H566 Z" fill="#B98200"/>
+    <line x1="566" y1="56" x2="566" y2="102" stroke="#FAFCFB" stroke-width="2"/>
+    <text x="300" y="84" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#fff">hunter-gatherers \u2014 about 95% of our history</text>
+    <path d="M583 116 V104" stroke="#8F6500" stroke-width="2" fill="none"/>
+    <text x="600" y="132" text-anchor="end" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#8F6500">farming begins (~12,000 years ago)</text>
+    <rect x="118" y="154" width="404" height="30" rx="8" fill="#FBF6E7" stroke="#F6ECC8"/>
+    <text x="320" y="174" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#8F6500">If the whole human story were one day, farming began in its final hour.</text>
+  </svg>` },
+
+      origins: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A simplified world map with gold stars marking places where farming was independently invented: the Fertile Crescent (the earliest, highlighted with a red ring), China, Mesoamerica, the Andes, the African Sahel, and New Guinea.">
+    <rect x="0" y="0" width="640" height="360" fill="#F1F6F8"/>
+    <text x="320" y="34" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#065F5C">Farming was invented more than once</text>
+    <g fill="#D8DED9" stroke="#C1CDC6" stroke-width="1.5">
+      <ellipse cx="120" cy="146" rx="72" ry="50"/>
+      <ellipse cx="178" cy="266" rx="42" ry="58"/>
+      <ellipse cx="332" cy="126" rx="44" ry="30"/>
+      <ellipse cx="348" cy="218" rx="52" ry="64"/>
+      <ellipse cx="492" cy="150" rx="96" ry="60"/>
+      <ellipse cx="548" cy="278" rx="48" ry="30"/>
+    </g>
+    <g font-family="Inter, sans-serif" fill="#B98200">
+      <text x="120" y="182" text-anchor="middle" font-size="19">\u2605</text>
+      <text x="162" y="276" text-anchor="middle" font-size="19">\u2605</text>
+      <text x="330" y="216" text-anchor="middle" font-size="19">\u2605</text>
+      <text x="542" y="154" text-anchor="middle" font-size="19">\u2605</text>
+      <text x="560" y="244" text-anchor="middle" font-size="19">\u2605</text>
+    </g>
+    <circle cx="406" cy="152" r="17" fill="none" stroke="#E55A4A" stroke-width="2.5"/>
+    <text x="406" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" fill="#B98200">\u2605</text>
+    <text x="406" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#C6483B">Fertile Crescent</text>
+    <text x="406" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" fill="#6B7E76">(the earliest)</text>
+    <text x="40" y="340" font-family="Inter, sans-serif" font-size="12" fill="#6B7E76"><tspan fill="#B98200" font-size="15">\u2605</tspan>  = a place where farming began on its own</text>
+  </svg>` },
+
+      surplus: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A flow diagram. Farmers grow more food than they need, and that surplus frees other people to become potters, builders, priests, soldiers, and rulers, leading to the first towns and cities.">
+    <rect x="0" y="0" width="640" height="300" fill="#FAFCFB"/>
+    <rect x="28" y="104" width="196" height="92" rx="14" fill="#FBF6E7" stroke="#F6ECC8" stroke-width="2"/>
+    <text x="126" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#8F6500">Farmers grow</text>
+    <text x="126" y="158" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#8F6500">MORE food</text>
+    <text x="126" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#8F6500">than they need</text>
+    <text x="288" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#6B7E76">surplus</text>
+    <path d="M232 150 H316" stroke="#07877F" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M316 150 l-12 -6 v12 z" fill="#07877F"/>
+    <g font-family="Inter, sans-serif">
+      <rect x="336" y="50" width="150" height="32" rx="8" fill="#E7F2F0" stroke="#B8DBD5"/><text x="411" y="71" text-anchor="middle" font-size="13" font-weight="600" fill="#065F5C">potters</text>
+      <rect x="336" y="90" width="150" height="32" rx="8" fill="#E7F2F0" stroke="#B8DBD5"/><text x="411" y="111" text-anchor="middle" font-size="13" font-weight="600" fill="#065F5C">builders</text>
+      <rect x="336" y="130" width="150" height="32" rx="8" fill="#E7F2F0" stroke="#B8DBD5"/><text x="411" y="151" text-anchor="middle" font-size="13" font-weight="600" fill="#065F5C">priests</text>
+      <rect x="336" y="170" width="150" height="32" rx="8" fill="#E7F2F0" stroke="#B8DBD5"/><text x="411" y="191" text-anchor="middle" font-size="13" font-weight="600" fill="#065F5C">soldiers</text>
+      <rect x="336" y="210" width="150" height="32" rx="8" fill="#E7F2F0" stroke="#B8DBD5"/><text x="411" y="231" text-anchor="middle" font-size="13" font-weight="600" fill="#065F5C">rulers</text>
+    </g>
+    <text x="320" y="282" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#6B7E76">not everyone has to farm \u2192 the first towns and cities</text>
+  </svg>` },
+    },
+    title: 'The Bargain That Built the World',
+    teaser: 'For almost all of human history, no one farmed. Then a few people planted seeds on purpose \u2014 a trade that built cities and kings, and a few troubles we are still living with.',
+    body: [
+      { t: 'p', cls: 'lead', html: `For almost the entire human story \u2014 hundreds of thousands of years \u2014 not a single person on Earth was a farmer. There were no towns, no markets, no fields of wheat. Every human who ever lived found food by hunting animals and gathering wild plants. Then, around twelve thousand years ago, a few people tried something brand new: they planted seeds on purpose. That one idea, which we call the <strong>Agricultural Revolution</strong>, set in motion almost everything about the world you live in today.` },
+      { t: 'fig', fig: 'timeline', cap: `<b>A very recent invention.</b> Stretch the whole human story across a single day, and farming does not begin until its final hour. For nearly all of our past, everyone was a hunter-gatherer.` },
+      { t: 'p', html: `How can we know anything at all about people who lived so long ago? ${A_ARCH} The scientists who dig up these clues and read them the way a detective reads a crime scene are called <strong>archaeologists</strong>, and almost everything in this passage comes from their patient work.` },
+      { t: 'h', text: 'Life before farming' },
+      { t: 'p', html: `It is easy to picture early humans as simple or backward. They were neither. Hunter-gatherers carried a deep, expert knowledge of the world around them \u2014 which plants healed and which could kill, where the herds would move in each season, how to shape stone, bone, and wood into precise tools, and how to use fire for warmth, cooking, and safety. ${A_ADAPT}` },
+      { t: 'p', html: `So why would anyone ever stop wandering? A big part of the answer is the weather \u2014 not today's weather, but the climate over thousands of years. ${A_CLIMATE} Little by little, tending those plants turned into planting them, and following wild animals turned into keeping them in pens. Farming had begun.` },
+      { t: 'fig', fig: 'origins', cap: `<b>Invented again and again.</b> Farming was not one discovery that spread from a single place. People worked it out on their own in the Fertile Crescent, China, the Americas, Africa, and New Guinea \u2014 at different times, with different crops.` },
+      { t: 'h', text: 'What farming changed' },
+      { t: 'p', html: `Farming was harder work than gathering, so at first it can seem like a strange choice. But it carried one powerful advantage. ${A_SURPLUS} A village could now feed a potter who grew no food at all, or a priest, or a chief. People settled in one place to stay near their fields, villages swelled into towns, and towns into the first cities. With a steady food supply, the number of humans on Earth began to climb.` },
+      { t: 'fig', fig: 'surplus', cap: `<b>How a surplus builds a city.</b> When farmers grow more than they need, other people are freed to specialize \u2014 and out of that specialization come crafts, temples, armies, and kings.` },
+      { t: 'h', text: 'Was it a good deal?' },
+      { t: 'p', html: `Here is where the story turns. Farming built our world, but it did not come free. ${A_COST} Crowded together in villages and living close to their animals, early farmers met new diseases that spread easily from person to person. Leaning on just a few crops meant that when a harvest failed, whole communities could starve. And because someone had to control all that stored-up food, farming also opened the first wide gaps between the powerful and everyone else.` },
+      { t: 'p', html: `So was the Agricultural Revolution the best thing humans ever did, or a costly mistake? Historians honestly still argue about it \u2014 and the fair answer is that it was both. It gave us cities, writing, science, and very likely the school you attend and the screen you are reading this on. It also handed us problems we are still working to solve. A single change can be the most important turning point in history and still come at a heavy price.` },
+      { t: 'p', html: `Every loaf of bread, every farm, every city, every ruler, and every classroom traces back to one quiet, world-changing idea: plant the seed on purpose. It may have been the greatest bargain our species ever struck, or the trickiest \u2014 but it is the one that made everything after it possible.` },
+    ],
+    questions: [
+      {
+        id: 'q1', type: 'mc',
+        prompt: `For almost the entire length of the human story, how did people get their food?`,
+        options: [
+          `They grew crops on small family farms.`,
+          `They hunted wild animals and gathered wild plants.`,
+          `They traded with nearby cities for grain.`,
+          `They raised herds of cattle and sheep in pens.`,
+        ],
+        answer: 1,
+        explain: `Humans were hunter-gatherers for the vast majority of our history. Farming, herding, cities, and trade all came much later.`,
+      },
+      {
+        id: 'q2', type: 'mc',
+        prompt: `According to the passage, what was the most important thing that farming made possible?`,
+        options: [
+          `It let people travel much farther than they ever had before.`,
+          `It quickly made the climate warmer and wetter around the world.`,
+          `It produced surplus food, so not everyone had to find food and people could take up other jobs.`,
+          `It taught early humans how to make fire for the first time.`,
+        ],
+        answer: 2,
+        explain: `Surplus is the key. Extra food meant some people no longer had to hunt or gather, which freed them to become potters, priests, soldiers, and rulers \u2014 and that specialization built towns and cities.`,
+      },
+      {
+        id: 'q3', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `Almost everything we know about the earliest humans comes from studying the objects they left behind.`,
+        options: [ A_ARCH, A_ADAPT, A_SURPLUS, A_COST ],
+        answer: 0,
+        explain: `Since these people left no writing, the tools, seeds, bones, and cave paintings they left behind are our main source of evidence about them.`,
+      },
+      {
+        id: 'q4', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `Taking up farming had real disadvantages for the people who first did it.`,
+        options: [ A_COST, A_SURPLUS, A_CLIMATE, A_ADAPT ],
+        answer: 0,
+        explain: `Their own skeletons show it: early farmers were often shorter, sicker, and worked harder than the hunter-gatherers before them.`,
+      },
+      {
+        id: 'q5', type: 'short',
+        prompt: `In your own words: the passage calls the Agricultural Revolution a "bargain" \u2014 a trade with both gains and costs. Explain what humans gained by farming and what they gave up.`,
+        sample: `By farming, humans gained a steady, larger food supply. That surplus meant not everyone had to find food, so people could become potters, priests, soldiers, and rulers; they settled down, built villages that grew into cities, and the population climbed. It eventually led to writing, science, and the whole modern world. But they gave up a lot too. Early farmers often worked harder and were shorter and sicker than hunter-gatherers. Living crowded together spread new diseases, depending on a few crops risked famine, and controlling the stored food created the first big gaps between the powerful and everyone else. So farming was both the foundation of civilization and the source of lasting problems.`,
+      },
+    ],
+  },
+
+  'regional-climates': {
+    key: 'regional-climates',
+    subject: 'science',
+    subjectLabel: 'Science',
+    grade: 'Grade 6',
+    grades: [6],
+    standard: 'CA NGSS \u00B7 MS-ESS2-6',
+    minutes: 8,
+    figures: {
+      twins: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two cities marked on the same line of latitude, about fifty-two degrees north, receiving identical sunlight. Goose Bay in Labrador averages about one degree Fahrenheit in January. London in England averages about forty-one degrees Fahrenheit.">
+    <rect x="0" y="0" width="640" height="300" fill="#FAFCFB"/>
+    <circle cx="320" cy="44" r="18" fill="#FFD966" stroke="#B98200" stroke-width="2.5"/>
+    <g stroke="#E0C169" stroke-width="2" stroke-dasharray="5 5">
+      <line x1="306" y1="56" x2="180" y2="138"/>
+      <line x1="334" y1="56" x2="460" y2="138"/>
+    </g>
+    <text x="320" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#8F6500">the same sunlight</text>
+
+    <text x="168" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0A3A4A">GOOSE BAY, LABRADOR</text>
+    <text x="472" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#6E5A2E">LONDON, ENGLAND</text>
+
+    <text x="320" y="141" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#6B7E76" letter-spacing="0.6">SAME LATITUDE &#183; 52&#176; NORTH</text>
+    <line x1="24" y1="150" x2="616" y2="150" stroke="#9CADA5" stroke-width="2" stroke-dasharray="8 6"/>
+    <circle cx="168" cy="150" r="6" fill="#2C3E38"/>
+    <circle cx="472" cy="150" r="6" fill="#2C3E38"/>
+
+    <rect x="40" y="174" width="256" height="104" rx="10" fill="#EAF2F7" stroke="#C6D8E2" stroke-width="2"/>
+    <text x="168" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="42" font-weight="800" fill="#2E6E9E">1&#176;F</text>
+    <text x="168" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B7E76">-17&#176;C &#183; average January</text>
+
+    <rect x="344" y="174" width="256" height="104" rx="10" fill="#FBF3DC" stroke="#E8D9A8" stroke-width="2"/>
+    <text x="472" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="42" font-weight="800" fill="#C6483B">41&#176;F</text>
+    <text x="472" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B7E76">5&#176;C &#183; average January</text>
+  </svg>` },
+
+      spin: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two globes compared, each showing the northern half of the planet above the equator. On a still Earth, air would run straight from the equator toward the pole. On a spinning Earth, that same moving air is deflected sideways into bands of steady wind: trade winds blowing east to west nearer the equator, and westerlies blowing west to east farther north.">
+    <rect x="0" y="0" width="640" height="350" fill="#FAFCFB"/>
+    <line x1="320" y1="24" x2="320" y2="330" stroke="#E2EBE6" stroke-width="2"/>
+
+    <text x="160" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#6B7E76" letter-spacing="0.4">IF EARTH STOOD STILL</text>
+    <circle cx="160" cy="196" r="96" fill="#EAF4F0" stroke="#C6DCD4" stroke-width="2"/>
+    <line x1="82" y1="252" x2="238" y2="252" stroke="#B98200" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="236" y="246" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#8F6500">equator</text>
+    <path d="M160 242 V132" stroke="#E55A4A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M160 122 l-6 12 h12 z" fill="#E55A4A"/>
+    <text x="160" y="322" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">air runs straight toward the pole</text>
+
+    <text x="480" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#065F5C" letter-spacing="0.4">BECAUSE EARTH SPINS</text>
+    <path d="M438 78 Q 480 58 522 78" stroke="#6B7E76" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M522 78 l-12 -4 l2 12 z" fill="#6B7E76"/>
+    <text x="534" y="72" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#6B7E76">spin</text>
+    <circle cx="480" cy="196" r="96" fill="#EAF4F0" stroke="#C6DCD4" stroke-width="2"/>
+    <line x1="402" y1="252" x2="558" y2="252" stroke="#B98200" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="556" y="246" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#8F6500">equator</text>
+
+    <text x="480" y="126" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#C6483B">westerlies</text>
+    <path d="M410 152 Q 480 132 546 154" stroke="#E55A4A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M550 156 l-13 -5 l1 13 z" fill="#E55A4A"/>
+
+    <text x="480" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#065F5C">trade winds</text>
+    <path d="M548 222 Q 480 242 416 222" stroke="#07877F" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M412 220 l13 -5 l-1 13 z" fill="#07877F"/>
+
+    <text x="480" y="322" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">and it bends the ocean's currents too</text>
+  </svg>` },
+
+      rainshadow: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A cutaway of a mountain range in the path of a wet ocean wind. Moist air from the Pacific climbs the western slope, cools, and drops rain and snow near the peak. The air then sinks down the eastern slope warm and dry, leaving desert on the far side.">
+    <rect x="0" y="0" width="640" height="320" fill="#FAFCFB"/>
+    <rect x="0" y="262" width="640" height="58" fill="#DCCFAC"/>
+    <rect x="0" y="236" width="150" height="84" fill="#8FB9C9"/>
+    <path d="M150 262 L330 90 L620 262 Z" fill="#B7A98C" stroke="#93866A" stroke-width="2"/>
+    <path d="M330 90 L306 114 L354 114 Z" fill="#F4F8FA"/>
+
+    <g fill="#9AA7B0">
+      <ellipse cx="252" cy="82" rx="52" ry="24"/>
+      <ellipse cx="218" cy="94" rx="32" ry="18"/>
+      <ellipse cx="286" cy="94" rx="34" ry="18"/>
+    </g>
+    <g stroke="#5B8AA6" stroke-width="2.5" stroke-linecap="round">
+      <path d="M216 112 l-5 18"/><path d="M240 112 l-5 20"/><path d="M264 112 l-5 18"/><path d="M288 112 l-5 20"/>
+    </g>
+
+    <path d="M30 214 C 110 208, 172 182, 226 148" stroke="#07877F" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M226 148 l-3 13 l12 -6 z" fill="#07877F"/>
+    <path d="M352 104 C 432 154, 506 196, 582 230" stroke="#E55A4A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M582 230 l-13 -1 l6 -11 z" fill="#E55A4A"/>
+
+    <text x="20" y="286" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0A3A4A" letter-spacing="0.6">PACIFIC</text>
+    <text x="330" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6E5A2E" letter-spacing="0.5">SIERRA NEVADA</text>
+    <text x="510" y="292" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#8A7A52" letter-spacing="0.6">GREAT BASIN DESERT</text>
+    <text x="104" y="192" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#065F5C">moist ocean air</text>
+    <text x="252" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#2E6E9E">rain and snow</text>
+    <text x="486" y="156" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#C6483B">dry air sinks</text>
+  </svg>` },
+    },
+    title: 'The Rivers That Have No Banks',
+    teaser: 'Two cities sit the same distance from the equator. One freezes solid every winter; in the other, roses survive. The reason is moving past you right now.',
+    body: [
+      { t: 'p', cls: 'lead', html: `Put your finger on a world map and slide it straight across the page. Every place you pass sits the same distance from the equator, which means the Sun treats them all almost identically \u2014 the same angle of light, the same hours of daylight, the same energy arriving. You would expect their winters to match. ${C_LATITUDE}` },
+      { t: 'p', html: `Consider two of them. Goose Bay sits on the coast of Labrador in eastern Canada. London sits on the southern coast of England. Both are roughly 52\u00B0 north, close enough that the difference hardly matters. In January, Goose Bay averages about 1\u00B0F \u2014 a cold that snaps tree trunks and freezes the bay solid. London averages about 41\u00B0F, mild enough that gardeners there grow roses straight through the winter. Same sunlight. Opposite winters. Something other than the Sun is doing this.` },
+      { t: 'fig', fig: 'twins', cap: `<b>The puzzle.</b> Two coastal cities at nearly the same latitude receive the same sunlight all year \u2014 and yet their average January temperatures sit roughly forty degrees apart.` },
+      { t: 'p', html: `Keep the difference between weather and climate in mind here. Weather is what the sky is doing this afternoon. <strong>Climate</strong> is the pattern a place keeps for decades \u2014 what its winters are usually like, how much rain usually falls. This is a climate question, and the answer turns out to have less to do with how much sunlight a place receives than with what <em>arrives</em> there: the air and water that come visiting, and where they have been.` },
+      { t: 'h', text: 'The spin that bends the wind' },
+      { t: 'p', html: `You already know the engine that moves them. The Sun heats the planet unevenly \u2014 hard at the equator, weakly at the poles \u2014 and air answers by rising where it is warm and sliding in underneath where it is cool. If the Earth held perfectly still, that would be the end of it: air would run in simple loops, straight out from the equator toward each pole and straight back again. But the Earth does not hold still. ${C_SPIN}` },
+      { t: 'fig', fig: 'spin', cap: `<b>A spinning planet bends its own wind.</b> On a motionless Earth, air would run straight from the equator toward the pole. On the real one, that flow is deflected sideways into bands of steady wind \u2014 and the same deflection curls the ocean's currents into vast loops.` },
+      { t: 'p', html: `These steady winds are so reliable that people named them and built empires on them. Near the equator the <strong>trade winds</strong> blow from east to west; sailing ships rode them across the Atlantic for three centuries. Across the middle latitudes \u2014 where nearly all of the United States and Europe sit \u2014 the <strong>westerlies</strong> blow the other way, from west to east. And that single fact cracks our puzzle open. London sits downwind of an ocean, so the air reaching it has spent days crossing open water. Goose Bay sits downwind of a frozen continent, so the air reaching it has spent days crossing Canada in January. Each city gets exactly the air its winds hand it.` },
+      { t: 'h', text: 'Why water changes everything' },
+      { t: 'p', html: `Ocean air is different air, and the reason comes down to one quiet property of water. ${C_OCEAN} The sea is slow: slow to warm in the spring, slow to cool in the fall, never in a hurry to match the sky above it. Land has no such patience. It bakes by day and sheds its heat by night, roasts in July and freezes in January.` },
+      { t: 'p', html: `You can watch this play out inside a single state. San Francisco and Sacramento are less than ninety miles apart at nearly the same latitude, yet in July, San Francisco's afternoons average around 68\u00B0F while Sacramento's push past 93\u00B0F. Same sun, same state, same day. One city has an ocean sitting upwind of it; the other has a wide inland valley. Ninety miles is enough to buy an entirely different climate.` },
+      { t: 'p', html: `The ocean does not just sit there, either. ${C_CURRENT} The most famous of them, the Gulf Stream, gathers warm water in the Gulf of Mexico, runs it up the eastern seaboard, and flings it northeast across the Atlantic toward Europe. Currents like these are a large part of why a map of the world's climates does not look like a tidy set of horizontal stripes.` },
+      { t: 'h', text: 'Mountains build climates of their own' },
+      { t: 'p', html: `The last great shaper is the land itself. Elevation alone drops the temperature about 3.5\u00B0F for every thousand feet you climb, which is how a country can be sweltering at sea level and snow-capped a few miles overhead. But a mountain range standing in the path of a wet wind does something even more dramatic. ${C_RAINSHADOW}` },
+      { t: 'fig', fig: 'rainshadow', cap: `<b>One mountain, two climates.</b> Wet Pacific air is forced upward, cools, and unloads its water on the western slope. What crosses the crest is warm, dry air \u2014 and the far side lives in the mountains' rain shadow.` },
+      { t: 'p', html: `California is the textbook case. Pacific storms ride the westerlies inland, slam into the Sierra Nevada, and dump their water climbing it \u2014 which is why those mountains carry some of the deepest snowpack in the country. What spills over the crest has almost nothing left to give. Nevada, on the far side, is the driest state in the United States, and it is dry for a plain reason: the Sierra got there first.` },
+      { t: 'h', text: 'The fact everybody knew that turned out to be half wrong' },
+      { t: 'p', html: `For most of the last century, the London puzzle had a tidy one-sentence answer: <em>the Gulf Stream keeps Europe warm.</em> It was in the textbooks, in the documentaries, in the mouth of every geography teacher. Then, in 2002, a team of climate scientists decided to actually measure how much heat that current delivers and compare it with everything else in the running. ${C_REVISED}` },
+      { t: 'p', html: `The current does help. But the larger share of the credit belongs to the westerlies themselves, sweeping across an ocean that spent all summer soaking up heat and gives it back over the winter \u2014 and to the way the Rocky Mountains bend the whole continent's wind pattern, spilling arctic air southward over eastern Canada while nudging mild air north toward Europe. The old answer was not a wild guess. It was reasonable, it was repeated for decades by careful people, and it was still only part of the truth. That is worth sitting with, because it is how science actually works: not as a list of settled facts handed down, but as a long argument with itself, in which "everybody knows this" is exactly the sort of claim that eventually gets checked.` },
+      { t: 'p', html: `So when you ask why a place is the way it is \u2014 why it is foggy, or bone dry, or green in February \u2014 the answer is almost never simply <em>because of where it sits</em>. It is where it sits, plus which direction its wind comes from, plus what that wind crossed on the way, plus whatever mountains stood in the road. Rivers of air and water are running over this planet right now with no banks to hold them, and every place on Earth lives with the climate those rivers deliver to its door.` },
+    ],
+    questions: [
+      {
+        id: 'q1', type: 'mc',
+        prompt: `London and Goose Bay sit at almost exactly the same latitude, yet London's winters run about forty degrees warmer. According to the passage, what is the main reason?`,
+        options: [
+          `London is millions of miles closer to the Sun during the winter.`,
+          `London receives many more hours of daylight in winter than Goose Bay does.`,
+          `The prevailing westerlies reach London after crossing an ocean, while the same winds reach Goose Bay after crossing a frozen continent.`,
+          `Goose Bay sits at a far higher elevation, and temperature falls as you climb.`,
+        ],
+        answer: 2,
+        explain: `Both cities receive nearly identical sunlight \u2014 that is what makes the puzzle a puzzle. What differs is the air that arrives, and the westerlies bring London ocean air while dragging continental cold across Labrador.`,
+      },
+      {
+        id: 'q2', type: 'mc',
+        prompt: `San Francisco and Sacramento are less than ninety miles apart at nearly the same latitude, but Sacramento's July afternoons run about twenty-five degrees hotter. Why?`,
+        options: [
+          `Sacramento lies far enough south that sunlight strikes it much more directly.`,
+          `Water warms and cools far more slowly than land, so the ocean upwind of San Francisco keeps it mild while inland Sacramento is free to bake.`,
+          `San Francisco gets heavy summer rain, and the rain cools it down.`,
+          `Sacramento sits at a much higher elevation than San Francisco.`,
+        ],
+        answer: 1,
+        explain: `It is the ocean's slowness. Water is stubborn about changing temperature, so coastal air stays moderate while air over open land follows the Sun up and down. (San Francisco gets almost no summer rain at all \u2014 its cool summers are the ocean's doing, not a storm's.)`,
+      },
+      {
+        id: 'q3', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `The direction a place's wind usually blows from is not a matter of luck \u2014 it is set by the planet itself.`,
+        options: [ C_SPIN, C_OCEAN, C_RAINSHADOW, C_LATITUDE ],
+        answer: 0,
+        explain: `Earth's rotation bends moving air sideways, and that bending is exactly what makes prevailing winds prevail \u2014 the same direction, year after year.`,
+      },
+      {
+        id: 'q4', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `A desert can sit directly beside mountains that receive plenty of rain and snow.`,
+        options: [ C_RAINSHADOW, C_CURRENT, C_OCEAN, C_REVISED ],
+        answer: 0,
+        explain: `The air wrings itself out climbing the windward side and comes over the crest with nothing left, so the wet mountains and the dry desert are two halves of one process.`,
+      },
+      {
+        id: 'q5', type: 'short',
+        prompt: `In your own words: suppose you find two towns on a map at exactly the same latitude, and you are told one has mild winters while the other has brutal ones. Name two things you would want to find out about those towns, and explain what each one would tell you.`,
+        sample: `First I would want to know whether either town is near an ocean and which direction its usual winds come from. Water changes temperature slowly, so a town downwind of an ocean gets mild, steady air, while a town downwind of a large landmass gets whatever extreme the land is doing \u2014 baking in summer and freezing in winter. Second I would want to know about the land around them: whether there are mountains nearby and how high the town sits. Mountains can block wet air and leave the far side dry, and the temperature drops the higher you go. Two towns can get identical sunlight and still end up with completely different climates because of the wind, the water, and the land around them.`,
+      },
+    ],
+  },
+
+  'river-civilizations': {
+    key: 'river-civilizations',
+    subject: 'social',
+    subjectLabel: 'Social studies',
+    grade: 'Grade 6',
+    grades: [6],
+    standard: 'CA HSS \u00B7 6.2',
+    minutes: 9,
+    figures: {
+      map: { type: 'svg', svg: `
+  <svg viewBox="0 0 580 677" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A map of the ancient Near East. The Nile runs north through Egypt to the Mediterranean, with Memphis near its delta, Thebes upriver, and Napata and Meroë farther south in Kush. To the east, the Tigris and Euphrates run southeast toward the Persian Gulf through Mesopotamia, with Nineveh on the Tigris and Babylon, Uruk and Ur along the Euphrates. A shaded band traces the Fertile Crescent, arcing from the eastern Mediterranean coast north through Syria and then southeast down between the two rivers to the Gulf.">
+  <rect x="0" y="0" width="580" height="677" fill="#D3E5EE"/>
+  <path d="M184.2,117.2L171.3,125.6L170.5,128.1L174.0,134.1L165.3,134.6L158.3,140.7L149.6,142.8L148.3,145.7L146.6,145.6L144.8,143.2L140.5,143.5L134.5,141.3L131.2,135.0L130.8,131.4L133.1,132.4L139.5,128.7L142.5,129.3L145.1,128.7L146.6,122.9L155.7,124.2L163.1,123.9L174.3,120.5L182.9,116.2L186.5,115.3L184.2,117.2Z M322.7,660.8L323.6,663.5L320.8,661.9L322.0,660.2L322.7,660.8Z M244.4,401.7L239.9,397.5L235.2,395.6L234.6,394.4L235.3,393.2L236.7,395.1L240.6,396.8L245.7,400.8L244.4,401.7Z M236.8,392.5L235.6,391.9L235.6,389.8L236.5,388.5L236.8,392.5Z M369.9,643.2L371.8,643.4L370.9,642.0L371.7,640.7L374.4,643.4L374.1,647.2L372.0,644.4L369.3,644.9L367.7,644.1L365.3,641.4L364.7,639.5L366.7,638.3L367.4,636.8L366.8,635.2L368.2,635.4L368.9,637.0L368.9,642.3L369.9,643.2Z M324.3,671.6L325.4,673.1L327.0,671.4L330.9,673.5L330.7,674.8L320.2,673.9L319.6,671.6L321.4,672.7L322.6,672.1L321.3,670.6L319.4,670.3L319.5,669.0L320.9,667.9L319.8,666.2L323.2,667.6L324.1,668.8L324.3,671.6Z M580.0,387.1L579.2,385.5L579.7,382.9L578.8,379.2L580.0,378.0Z M525.1,283.5L522.7,283.9L520.3,278.7L522.9,273.6L526.9,279.1L526.7,281.6L525.1,283.5Z M20.8,107.8L18.4,108.4L17.7,107.1L18.7,104.0L17.7,101.1L22.6,96.3L30.4,93.8L30.4,95.6L28.2,100.0L26.4,102.3L26.8,104.1L23.8,104.6L20.8,107.8Z M4.3,120.8L3.4,122.3L2.4,121.0L2.9,119.5L1.7,117.1L3.9,113.5L3.9,111.8L5.5,110.9L3.9,116.2L5.8,120.4L4.3,120.8Z M21.2,90.4L20.7,90.9L19.4,89.0L21.3,88.0L21.2,90.4Z M0.5,79.2L0.0,77.4L1.0,78.0L0.5,79.2Z M0.0,83.5L5.3,80.8L8.7,81.7L3.7,84.2L0.0,84.9Z M0.0,56.3L1.0,56.6L1.4,58.3L0.0,58.4Z M580.0,0.0L580.0,284.6L571.8,275.3L569.4,267.5L567.2,267.2L556.7,272.2L553.6,269.4L543.7,263.8L543.0,262.6L544.2,262.0L547.7,262.6L549.1,261.6L548.5,259.9L546.2,258.9L543.0,258.9L543.9,260.5L540.9,262.0L540.3,263.9L541.0,269.7L538.8,272.1L534.9,272.3L533.0,273.8L529.5,274.8L521.8,271.9L517.9,272.7L518.4,277.6L521.8,285.0L517.5,283.7L511.5,290.0L514.5,290.7L518.3,290.2L519.6,291.0L522.8,301.5L526.7,307.5L533.8,325.1L538.3,331.7L538.9,334.3L538.0,336.5L540.7,339.1L548.8,342.9L547.3,344.4L553.0,351.6L556.2,352.4L560.7,357.9L567.3,361.4L571.4,366.0L568.3,365.0L567.9,365.6L568.3,369.8L572.2,373.2L572.9,375.9L571.5,381.7L568.4,381.4L573.6,395.0L578.9,400.5L580.0,403.3L580.0,677.1L389.0,677.1L387.9,672.8L390.9,662.2L389.7,650.6L388.2,647.3L387.5,642.6L383.9,638.9L383.6,636.4L379.7,631.9L377.5,623.2L371.5,616.6L364.0,610.6L361.8,607.2L358.1,600.3L356.2,594.8L351.2,588.5L348.4,577.3L343.4,565.9L340.4,561.5L339.6,558.5L336.1,556.6L332.8,551.9L322.8,544.3L318.0,543.5L314.1,540.8L311.3,537.3L308.3,531.1L303.0,524.5L298.5,515.2L299.9,511.8L299.8,509.4L295.9,499.3L297.0,490.3L298.5,485.0L297.7,479.5L296.2,476.5L296.4,474.5L294.7,473.5L293.3,471.4L294.7,471.4L291.2,466.7L288.9,459.6L282.9,448.3L278.6,442.7L269.5,435.1L267.1,435.0L264.4,432.6L260.2,432.1L251.3,417.4L253.4,413.5L250.5,404.3L244.9,394.5L241.0,391.4L238.8,383.4L234.9,381.6L228.3,367.9L218.5,354.7L216.3,349.4L211.8,344.6L207.9,336.2L201.9,327.8L199.4,326.4L190.6,325.1L188.2,327.0L188.0,324.6L192.0,314.6L192.5,308.7L197.0,287.4L196.8,285.5L190.9,293.4L188.0,307.7L183.8,318.8L182.6,328.3L178.2,335.3L173.9,333.5L166.8,327.5L162.7,321.7L154.2,313.0L151.3,301.5L144.9,292.9L141.2,286.4L137.4,273.8L135.1,275.1L135.5,277.2L132.3,283.3L133.2,286.0L138.2,291.9L139.7,302.9L142.8,306.9L145.6,313.0L153.1,323.0L160.3,329.5L161.6,331.6L161.7,339.7L165.3,347.1L167.9,349.2L169.0,351.5L171.8,366.4L174.0,369.2L180.9,383.8L186.7,393.1L202.2,427.0L209.2,435.9L216.8,442.0L213.0,441.6L210.8,442.4L209.9,446.4L210.3,455.8L214.7,469.6L220.0,475.3L227.8,478.4L232.4,485.0L242.6,493.2L243.6,495.5L243.9,502.4L245.0,507.5L248.8,514.7L253.2,520.8L253.2,522.7L250.5,520.9L250.3,524.3L252.4,536.2L251.4,540.7L251.6,548.3L253.3,557.5L252.9,563.3L255.7,577.0L258.4,584.6L259.9,586.4L264.8,588.1L269.6,591.9L276.5,600.5L278.5,599.4L279.7,601.3L285.7,605.4L294.0,623.4L297.0,632.9L299.7,642.8L301.7,657.7L303.5,665.3L306.6,669.1L308.7,676.2L310.9,677.1L0.0,677.1L0.0,233.3L6.1,234.7L13.3,239.3L20.5,239.8L23.9,242.5L37.4,243.8L51.1,249.9L59.9,247.2L72.3,238.9L75.3,237.8L79.5,238.0L83.8,232.4L88.1,232.0L96.8,229.4L95.9,230.6L87.9,233.6L91.3,233.9L98.8,232.3L100.0,228.7L100.8,228.4L111.7,232.4L113.7,232.5L120.7,230.1L126.8,235.7L125.3,235.6L120.7,231.7L120.3,233.7L117.8,237.0L123.6,239.0L125.9,242.6L128.5,241.9L130.4,239.6L128.7,237.0L131.4,238.1L138.3,243.3L151.3,240.5L152.9,242.8L157.4,241.5L164.5,241.6L170.4,240.2L177.1,236.7L184.7,228.7L189.5,220.2L200.1,187.1L212.5,160.7L213.4,154.7L217.3,149.4L221.6,146.4L219.4,135.2L220.7,127.5L219.7,122.0L216.3,117.8L218.2,110.1L221.1,105.9L217.5,97.2L219.2,94.6L226.8,87.5L226.6,83.4L223.3,80.5L213.8,85.7L212.9,87.7L210.7,89.2L207.2,89.9L190.1,83.1L180.2,89.0L171.7,97.7L165.2,100.8L146.3,103.2L143.0,104.9L136.6,103.1L132.7,100.8L123.9,91.0L104.7,83.0L89.9,81.8L88.4,83.7L87.8,91.2L85.1,98.4L83.6,99.1L79.8,97.3L66.4,101.5L54.9,96.8L52.9,94.8L50.3,86.6L48.6,85.9L46.8,87.1L44.8,87.1L36.6,83.5L32.2,83.3L29.5,86.8L25.2,88.2L25.0,87.2L26.8,84.9L19.8,85.4L16.2,87.1L11.2,86.0L11.5,85.1L15.6,84.0L24.8,82.7L30.7,77.2L8.6,77.5L6.5,78.7L6.2,75.8L7.4,74.5L13.2,73.5L12.8,71.1L9.3,68.5L5.4,67.2L3.7,61.2L1.7,59.7L1.9,58.9L5.5,57.8L6.3,53.4L5.7,50.7L0.0,49.0L0.0,39.1L3.6,37.6L0.0,37.7L0.0,0.0Z" fill="#E9DFC4" stroke="#BFB08C" stroke-width="1.1" stroke-linejoin="round"/>
+  <path d="M187.6,234.0L207.3,178.3L232.0,97.5L286.3,75.2L350.5,78.0L404.8,122.6L439.3,183.9L466.5,220.1L491.1,248.0" fill="none" stroke="#6FA361" stroke-width="34" stroke-opacity="0.20" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#2F7FA6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M285.3,109.7L277.6,107.2L273.4,103.8L273.1,102.7L276.1,98.0L276.0,96.3"/>
+  <path d="M290.4,27.5L291.5,25.8L289.7,20.1"/>
+  <path d="M145.1,440.6L145.8,445.6L144.9,451.6L146.0,458.8L144.5,462.3L137.9,471.6L137.6,473.5L133.7,477.2L131.5,477.8L129.1,476.0L126.8,475.5L124.4,476.5L120.8,481.3L112.2,489.0L108.6,493.4L105.6,500.3L101.0,506.8"/>
+  <path d="M285.3,109.7L294.1,108.3L301.8,109.2L311.3,111.9L316.7,114.7L318.1,117.6L321.0,120.6L327.4,125.5L327.2,126.0L330.1,127.5L332.6,133.3L334.1,134.4L336.2,138.3L343.8,145.4L344.2,148.8L345.3,149.7"/>
+  <path d="M272.1,82.6L272.9,85.2L278.2,90.3L278.0,92.5L276.0,96.3"/>
+  <path d="M211.8,663.1L206.1,654.4L204.1,649.1L196.3,636.3L196.1,634.7L183.1,626.4L178.4,622.7L175.8,618.4L171.6,615.8"/>
+  <path d="M211.9,663.0L212.6,671.1L214.8,677.1"/>
+  <path d="M102.8,268.8L100.7,264.0L101.4,261.4L103.9,258.9L104.9,255.7L104.3,248.9L104.8,247.1L109.1,241.6L111.3,240.0L113.0,239.8L115.3,237.4L119.4,230.5"/>
+  <path d="M312.0,38.6L321.3,40.5L321.5,41.6L325.3,45.2L324.6,46.4L325.1,47.2L326.7,47.6L327.3,49.5L327.1,52.9L331.4,54.8L344.8,55.7L349.4,56.9L361.3,57.2L365.3,58.3L366.6,62.5L366.3,64.6L367.3,65.7L369.7,65.9L375.8,69.0L377.9,71.6L379.5,76.3"/>
+  <path d="M455.7,236.7L457.6,238.8L471.9,242.8L480.9,247.9L490.8,246.3L501.8,246.1L504.5,245.1L505.2,246.1"/>
+  <path d="M345.3,149.7L349.9,150.7L352.3,149.3L357.9,149.5L365.9,147.4L370.0,149.2L373.2,153.2L377.3,153.5L377.7,152.3L379.2,152.4L378.4,155.2L379.3,155.9L379.5,158.4L382.8,161.6L384.1,165.2L386.8,164.7L388.2,165.4L388.1,168.5L389.2,170.8L391.9,173.4L395.7,175.5L397.5,174.8L402.0,176.8L410.9,178.8L414.0,180.8L416.4,183.9L420.3,185.0L422.6,188.0L425.8,194.3L425.9,203.5L429.1,215.3L430.6,217.9L431.3,224.0L433.1,227.1L438.6,231.9L445.3,232.9L451.5,236.2L455.8,236.7"/>
+  <path d="M290.4,27.5L285.2,28.8L282.6,30.3L280.3,34.0L280.6,34.8L286.5,37.6L292.4,38.6L296.1,40.9L298.0,40.7L299.0,41.6L299.0,43.7L299.9,44.9L302.3,45.9L302.1,47.3L295.6,53.3L294.3,57.2L292.3,58.1L291.5,60.1L288.8,60.4L282.3,64.2L276.6,66.1L270.7,66.2L269.5,67.3L267.9,69.9L268.1,74.8L271.3,78.1L272.1,82.6"/>
+  <path d="M325.6,0.0L326.8,2.9L323.9,6.5L306.4,3.2L289.7,7.3L283.5,9.9L282.0,12.7L285.2,15.9L289.2,18.3L289.7,20.1"/>
+  <path d="M135.5,673.3L136.6,662.0L138.9,656.0L142.8,651.5L146.3,649.0L152.1,647.4L156.9,644.0L160.9,642.6L163.7,640.2L165.5,636.8L166.4,628.4L170.9,620.0L172.0,613.2L171.3,604.4L170.3,599.7L165.8,594.7L164.8,589.0L164.0,587.2L162.7,586.8L161.4,574.7L158.3,571.0L157.5,567.8L151.5,565.5L148.5,565.3L146.6,566.3L138.7,575.1L136.9,575.3L131.0,582.6L129.1,582.6L125.3,584.8L123.5,590.5L121.5,591.2L114.6,601.2L110.4,605.3L106.0,607.0L102.3,607.4L94.0,603.1L92.4,600.2L90.7,593.5L89.2,591.8L86.6,585.3L85.3,566.4L82.7,557.6L83.2,555.7L88.2,552.6L88.6,545.7L87.3,542.5L84.5,541.7L83.1,540.1L81.9,534.5L83.2,530.1L88.3,526.6L88.7,524.2L91.5,520.5L91.3,518.9L98.0,512.7L98.6,510.1L101.0,506.8"/>
+  <path d="M145.1,440.6L146.1,418.8L144.9,411.3L138.9,405.7L136.7,402.6L135.6,396.6L140.8,391.4L142.3,387.9L141.5,380.9L140.1,380.0L132.3,382.6L129.0,382.4L127.2,379.7L123.8,378.9L122.6,376.2L119.0,372.1L118.8,370.3L116.2,368.8L115.9,366.9L112.4,363.3L107.1,355.1L98.0,346.7L95.5,342.7L96.0,339.4L95.3,329.2L92.4,324.2L92.3,322.4L94.1,317.6L96.2,306.7L104.1,293.1L105.8,279.1L104.6,269.7"/>
+  <path d="M104.6,269.7L100.0,267.7L95.1,263.2L92.5,244.9L88.1,240.4L86.1,235.3L83.8,232.4"/>
+  <path d="M505.2,246.1L508.0,249.9L510.9,252.0L513.0,257.4L514.5,258.8L519.9,260.3L521.9,261.4L523.9,264.1L526.5,265.1L528.2,267.8L529.0,272.0L531.8,274.1"/>
+  <path d="M379.5,76.3L382.8,79.7L382.9,81.5L384.0,82.7L387.8,84.0L389.0,85.9L392.3,86.6L392.5,87.4L390.2,88.9L389.2,90.8L391.1,92.5L395.7,94.0L399.1,96.6L401.3,100.2L403.4,107.4L403.4,109.8L402.2,112.4L402.6,113.7L401.3,115.4L401.4,120.7L408.9,133.6L408.2,134.9L414.3,149.0L416.0,156.2L418.6,158.9L425.3,160.2L429.5,162.3L430.1,164.1L429.4,168.0L429.9,168.9L427.2,174.7L429.4,181.3L430.2,181.4L433.0,185.9L436.2,188.8L441.1,191.6L444.9,192.5L446.2,194.9L449.8,195.7L451.6,198.8L453.7,200.5L464.2,203.3L469.7,200.1L472.3,199.7L473.9,201.0L486.0,205.0L487.1,208.4L486.5,213.2L489.3,215.1L492.1,219.6L497.0,222.2L497.2,224.3L499.1,227.7L502.6,232.4L504.3,237.2L504.5,245.2"/>
+  </g>
+  <circle cx="398.6" cy="95.9" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="430.0" cy="202.2" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="460.0" cy="236.2" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="471.5" cy="246.3" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="104.9" cy="277.2" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="139.2" cy="392.9" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="119.2" cy="592.5" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <circle cx="166.6" cy="637.1" r="4" fill="#8A3324" stroke="#FAFCFB" stroke-width="1.6"/>
+  <g stroke="#5A6A62" stroke-width="2" stroke-linecap="round"><path d="M425.2 646.4 H550.4"/><path d="M425.2 646.4 v-5"/><path d="M550.4 646.4 v-5"/></g>
+  <text x="96.3" y="150.5" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#3E7E96" letter-spacing="1.2">MEDITERRANEAN SEA</text>
+  <text x="256.7" y="507.1" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#3E7E96" letter-spacing="1.2" transform="rotate(58 256.7 507.1)">RED SEA</text>
+  <text x="552.9" y="317.6" text-anchor="end" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#3E7E96" letter-spacing="1">PERSIAN</text>
+  <text x="552.9" y="339.9" text-anchor="end" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#3E7E96" letter-spacing="1">GULF</text>
+  <text x="59.2" y="345.5" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#8A7440" letter-spacing="3.2">EGYPT</text>
+  <text x="64.2" y="574.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#8A7440" letter-spacing="3.2">KUSH</text>
+  <text x="429.4" y="186.7" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#8A7440" letter-spacing="2.2" transform="rotate(-40 429.4 186.7)">MESOPOTAMIA</text>
+  <text x="293.7" y="33.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#4C7A42" letter-spacing="1.6">THE FERTILE CRESCENT</text>
+  <text x="419.1" y="107.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" font-style="italic" fill="#2F7FA6" transform="rotate(79.9 419.1 107.0)">Tigris</text>
+  <text x="365.8" y="166.8" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" font-style="italic" fill="#2F7FA6" transform="rotate(58.6 365.8 166.8)">Euphrates</text>
+  <text x="112.4" y="390.1" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" font-style="italic" fill="#2F7FA6" transform="rotate(45.5 112.4 390.1)">Nile</text>
+  <text x="404.6" y="93.9" text-anchor="start" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Nineveh</text>
+  <text x="423.0" y="200.2" text-anchor="end" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Babylon</text>
+  <text x="467.0" y="240.2" text-anchor="start" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Uruk</text>
+  <text x="478.5" y="263.3" text-anchor="start" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Ur</text>
+  <text x="97.9" y="276.2" text-anchor="end" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Memphis</text>
+  <text x="146.2" y="400.9" text-anchor="start" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Thebes</text>
+  <text x="112.2" y="596.5" text-anchor="end" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Napata</text>
+  <text x="173.6" y="645.1" text-anchor="start" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#5A3A2A">Meroë</text>
+  <text x="487.8" y="660.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#5A6A62">500 km</text>
+  <rect x="0.6" y="0.6" width="578.8" height="675.9" fill="none" stroke="#BFD3DC" stroke-width="1.2"/>
+  </svg>` },
+
+      flood: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two graphs of river flooding over the same span of years. The Nile's flood is drawn as four identical evenly spaced humps, arriving on the same schedule every year. The Tigris and Euphrates flood is drawn as jagged spikes of wildly different heights at irregular intervals, with long flat gaps between them.">
+    <rect x="0" y="0" width="640" height="340" fill="#FAFCFB"/>
+    <line x1="320" y1="24" x2="320" y2="320" stroke="#E2EBE6" stroke-width="2"/>
+
+    <text x="170" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#2F7FA6" letter-spacing="0.6">THE NILE</text>
+    <text x="170" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">the same weeks, every year</text>
+    <path d="M40 230 Q72.5 132 105 230 Q137.5 132 170 230 Q202.5 132 235 230 Q267.5 132 300 230 Z" fill="#CFE3EC" stroke="#2F7FA6" stroke-width="2.5" stroke-linejoin="round"/>
+    <line x1="40" y1="230" x2="300" y2="230" stroke="#2C3E38" stroke-width="2"/>
+    <g stroke="#9CADA5" stroke-width="1.5"><path d="M105 230 v7"/><path d="M170 230 v7"/><path d="M235 230 v7"/></g>
+    <text x="170" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6B7E76">each hump is one year</text>
+    <text x="170" y="294" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#065F5C">A flood you can predict</text>
+    <text x="170" y="313" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#065F5C">is a calendar.</text>
+
+    <text x="470" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#C6483B" letter-spacing="0.6">THE TIGRIS &amp; EUPHRATES</text>
+    <text x="470" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#6B7E76">no one could say when</text>
+    <path d="M340 230 L362 190 L374 230 L396 116 L408 230 L436 230 L458 162 L468 230 L502 230 L518 96 L530 230 L558 206 L568 230 L600 230 Z" fill="#F6DCD6" stroke="#C6483B" stroke-width="2.5" stroke-linejoin="round"/>
+    <line x1="340" y1="230" x2="600" y2="230" stroke="#2C3E38" stroke-width="2"/>
+    <text x="470" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6B7E76">the same span of years</text>
+    <text x="470" y="294" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#8A3324">A flood you cannot predict</text>
+    <text x="470" y="313" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#8A3324">is a problem to be organized.</text>
+  </svg>` },
+
+      timeline: { type: 'svg', svg: `
+  <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A timeline from 3500 BCE to 500 CE with three overlapping bars. Mesopotamia runs from about 3500 to 539 BCE. Egypt runs from about 3100 BCE to 30 BCE. Kush runs from about 2500 BCE to 350 CE, outlasting both. A marker around 744 to 656 BCE shows the period when Kushite kings ruled Egypt as pharaohs.">
+    <rect x="0" y="0" width="640" height="280" fill="#FAFCFB"/>
+
+    <text x="445" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#8A6D1F">Kushite kings rule Egypt</text>
+    <path d="M445 60 V90" stroke="#C9A227" stroke-width="2" stroke-dasharray="4 3"/>
+    <rect x="438.9" y="90" width="12.2" height="116" fill="#C9A227" opacity="0.30"/>
+
+    <rect x="60" y="96" width="407" height="26" rx="5" fill="#B08050"/>
+    <text x="70" y="114" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.8">MESOPOTAMIA</text>
+
+    <rect x="115" y="138" width="422" height="26" rx="5" fill="#C9A227"/>
+    <text x="125" y="156" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.8">EGYPT</text>
+
+    <rect x="197.5" y="180" width="392" height="26" rx="5" fill="#5F8A72"/>
+    <text x="207.5" y="198" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.8">KUSH</text>
+
+    <line x1="40" y1="228" x2="614" y2="228" stroke="#2C3E38" stroke-width="2"/>
+    <g stroke="#6B7E76" stroke-width="1.5">
+      <path d="M128.8 228 v7"/><path d="M266.3 228 v7"/><path d="M403.8 228 v7"/><path d="M541.3 228 v7"/>
+    </g>
+    <g font-family="Inter, sans-serif" font-size="11" fill="#6B7E76" text-anchor="middle">
+      <text x="128.8" y="250">3000 BCE</text>
+      <text x="266.3" y="250">2000 BCE</text>
+      <text x="403.8" y="250">1000 BCE</text>
+      <text x="541.3" y="250">1 CE</text>
+    </g>
+    <text x="320" y="272" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9CADA5">bars show roughly when each was a major power \u2014 Kush outlasted both of its neighbours</text>
+  </svg>` },
+    },
+    title: 'The Cities the Rivers Made',
+    teaser: 'Three of the earliest civilizations on Earth grew up in deserts. That is not the strange part \u2014 the strange part is that it makes perfect sense.',
+    body: [
+      { t: 'p', cls: 'lead', html: `Go looking for the first cities on Earth and you end up somewhere odd: the desert. Not the edge of a forest, not a green valley with steady rain, but some of the driest, most punishing country on the planet. Southern Iraq bakes past 120\u00B0F in summer. The land on either side of the Nile is sand for hundreds of miles. Yet this is where people first crowded together by the tens of thousands, invented writing, and started calling someone a king.` },
+      { t: 'p', html: `The explanation runs right through the middle of both deserts. A river in dry country is not just drinking water \u2014 it is a delivery service. ${M_SILT} A farmer beside a flooding river could feed people who never farmed at all: potters, soldiers, priests, scribes. That surplus, the same one that showed up at the end of the Agricultural Revolution, is the raw material every one of these civilizations was built from.` },
+      { t: 'fig', fig: 'map', cap: `<b>Three civilizations, two river systems.</b> Egypt and Kush strung out along the Nile; Mesopotamia between the Tigris and the Euphrates. The shaded arc is the Fertile Crescent. One honest note: this map shows the land <em>today</em>. Coastlines and river channels have shifted a great deal in four thousand years \u2014 more on that at the end.` },
+      { t: 'h', text: 'Between the rivers' },
+      { t: 'p', html: `<strong>Mesopotamia</strong> is not the name of a country. It is a Greek description meaning "between the rivers," and it describes the flat, hot plain lying between the Tigris and the Euphrates. Around 3200 BCE the city of Uruk there held tens of thousands of people \u2014 probably the largest gathering of humans anywhere on Earth at the time.` },
+      { t: 'p', html: `Living there took nerve. ${M_WILD} Notice what that demands: not just hard work but <em>organization</em> \u2014 thousands of people agreeing on who digs, who repairs, who decides. Some historians argue that Mesopotamia's kings and priests grew out of exactly this problem. The river did not merely feed the city; it forced the city to invent government.` },
+      { t: 'p', html: `It also forced the city to invent writing, and the origin is less romantic than you might hope. ${M_LEDGER} Only later did the same wedge-shaped marks \u2014 <strong>cuneiform</strong>, pressed with a cut reed \u2014 start carrying law codes, letters, complaints about lousy copper, and the oldest surviving epic poem. Writing began as an accountant's tool and grew into everything else.` },
+      { t: 'h', text: 'The river that kept its promise' },
+      { t: 'p', html: `Egypt had the same gift and a completely different temperament. ${M_GIFT} Egyptian farmers knew roughly when the water would come, roughly how high, and roughly when it would drain away and leave them a field of fresh black mud. The Greek writer Herodotus called Egypt the gift of the Nile, and the phrase stuck because it feels true \u2014 though it undersells how much work the gift still took.` },
+      { t: 'fig', fig: 'flood', cap: `<b>The same gift, delivered differently.</b> A river that floods on schedule and a river that floods whenever it likes will grow very different societies on their banks \u2014 even when the water and the silt are the same.` },
+      { t: 'p', html: `Geography sharpened the difference. ${M_SHIELD} Mesopotamia, by contrast, was wide open on every side, and its cities spent centuries fighting each other and being overrun by outsiders. So Egypt spent much of three thousand years as a single kingdom under one pharaoh, while Mesopotamia stayed a shifting patchwork of rival city-states. Two rivers, two gifts, two utterly different political shapes.` },
+      { t: 'p', html: `You can even hear it in what each believed. Historians often point out that Mesopotamian stories are full of gods who are unpredictable and easily annoyed \u2014 there is a great flood in their literature too \u2014 while Egyptian religion leans toward order, balance, and a life after death that continues much as this one did. It would be too neat to say the rivers wrote the religions. But it is hard to miss that the people with the dependable river expected the universe to be dependable.` },
+      { t: 'h', text: 'The kingdom upriver' },
+      { t: 'p', html: `Follow the Nile south past the rapids and you reach <strong>Kush</strong>, in what is now Sudan \u2014 the civilization most likely to be squeezed into one paragraph of a textbook, which is a mistake. Kush controlled the routes carrying gold, ivory, ebony, and incense north, and for centuries Egypt wanted that badly enough to invade and occupy it.` },
+      { t: 'p', html: `Then the direction reversed. As Egypt weakened, the Kushite king Piye marched north around 744 BCE and took the whole country. ${M_PHARAOHS} They restored Egyptian temples, revived old traditions, and were eventually pushed back south by an Assyrian invasion. Kush then moved its capital to Mero\u00EB, mastered ironworking, and lasted another eight hundred years \u2014 outliving both of the older civilizations on this map. There are more ancient pyramids standing in Sudan today than in Egypt.` },
+      { t: 'fig', fig: 'timeline', cap: `<b>They overlapped.</b> These are not three civilizations taking turns \u2014 they shared the map for centuries, traded, fought, and at one point Kush governed Egypt outright.` },
+      { t: 'h', text: 'The half of the story we cannot read' },
+      { t: 'p', html: `Here is where honesty is required. Kush developed its own writing system, <strong>Meroitic</strong>, and we have plenty of it carved on monuments. ${M_UNREAD} The alphabet was cracked over a century ago; the language behind it still has not been. It resembles nothing we can confidently match it to.` },
+      { t: 'p', html: `So almost everything usually said about Kush comes from Egyptian and Greek writers \u2014 its rivals, its trading partners, its occasional conquerors. Imagine your school being described only by a neighbouring school. You would get the buildings roughly right and the reasons entirely wrong. That gap is worth holding onto whenever a history book sounds confident about who someone was. What we know is shaped not only by what happened, but by whose records we can still read.` },
+      { t: 'p', html: `As for the rivers that started all of it: they did not stay put. The Euphrates has wandered west over four thousand years, and the cities that once lined it \u2014 Ur, Uruk, Babylon \u2014 now sit a dozen kilometres or more from the water. Ur was a working seaport, loading ships bound down the Persian Gulf. It stands today in dry desert, roughly 250 kilometres from the sea. The rivers made these cities, and then, with no particular ceremony, moved on.` },
+    ],
+    questions: [
+      {
+        id: 'q1', type: 'mc',
+        prompt: `Why did some of the world's first cities grow up in deserts rather than in wetter, greener places?`,
+        options: [
+          `Deserts were empty, so there was no one already living there to object.`,
+          `Flooding rivers left behind rich silt, letting farmers grow far more food than they needed and freeing others to do work besides farming.`,
+          `Dry air preserved buildings better, so desert cities lasted while others crumbled.`,
+          `The heat made crops grow faster than they could anywhere else.`,
+        ],
+        answer: 1,
+        explain: `The desert was not the advantage \u2014 the river running through it was. Flood silt made a food surplus possible, and a surplus is what lets a society support people who are not growing food.`,
+      },
+      {
+        id: 'q2', type: 'mc',
+        prompt: `Egypt spent much of three thousand years as one kingdom under a single pharaoh, while Mesopotamia remained a patchwork of rival city-states. What does the passage give as the main reason?`,
+        options: [
+          `Egypt's population was far too small to split into separate cities.`,
+          `Mesopotamians had no system of writing, so they could not organize a large kingdom.`,
+          `Egypt had a predictable river and natural barriers of desert, rapids, and sea, while Mesopotamia's rivers were erratic and its plain lay open to invasion from every direction.`,
+          `Egypt's pharaohs had iron weapons and Mesopotamia's kings did not.`,
+        ],
+        answer: 2,
+        explain: `Geography did a lot of the work. A dependable river and hard borders made Egypt governable as one unit; an unpredictable river on an open plain kept Mesopotamia fragmented and fighting.`,
+      },
+      {
+        id: 'q3', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `Writing was not invented to tell stories \u2014 it was invented to keep track of things.`,
+        options: [ M_LEDGER, M_SILT, M_WILD, M_GIFT ],
+        answer: 0,
+        explain: `The earliest tablets are inventories, not literature. Grain, sheep, and oil came first; the poems came later.`,
+      },
+      {
+        id: 'q4', type: 'evidence',
+        prompt: `Cite the evidence. Which sentence best supports this idea:`,
+        claim: `Our picture of a civilization can have a hole in it even when that civilization left plenty of writing behind.`,
+        options: [ M_UNREAD, M_PHARAOHS, M_SHIELD, M_SILT ],
+        answer: 0,
+        explain: `Kush wrote a great deal, and we can pronounce every word of it. We simply cannot understand it \u2014 so the record survives while its meaning does not.`,
+      },
+      {
+        id: 'q5', type: 'short',
+        prompt: `In your own words: the Nile flooded on a reliable schedule and the Tigris and Euphrates did not. Explain how that one difference helped push Egypt and Mesopotamia toward such different societies.`,
+        sample: `Because the Nile flooded at about the same time every year, Egyptians could plan around it \u2014 they knew when to plant and when the water would come, so life felt orderly and predictable, and one government could run the whole river valley. The Tigris and Euphrates flooded whenever they wanted and sometimes destroyed everything, so Mesopotamians had to build canals and dikes and organize large groups of people quickly just to survive. That created strong local leaders in each city, but the land was flat and open with no natural barriers, so the cities kept fighting each other and outsiders kept invading instead of everyone joining into one kingdom.`,
       },
     ],
   },
@@ -1140,7 +2238,9 @@ function renderIndex() {
       grid.appendChild(ghost);
       shelf.appendChild(grid);
     } else {
-      shelf.appendChild(h('div', { class: 'shelf-empty' }, 'No passages match your search.'));
+      const emptyMsg = idxSearch ? 'No passages match your search.'
+        : (idxGrade !== 'all' ? `No Grade ${idxGrade} passages here yet.` : 'No passages yet.');
+      shelf.appendChild(h('div', { class: 'shelf-empty' }, emptyMsg));
     }
     host.appendChild(shelf);
   }
